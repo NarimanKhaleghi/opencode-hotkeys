@@ -40,6 +40,8 @@
 
 همه‌چیز محلی است: بدون درخواست شبکه، بدون telemetry و بدون وابستگی runtime به پکیج‌های OpenCode.
 
+> **فقط TUI ترمینال.** اپلیکیشن دسکتاپ OpenCode (Electron) هنوز پلاگین‌های TUI را لود نمی‌کند. برای استفاده، `opencode` را در ترمینال اجرا کنید.
+
 <p align="center">
   <img src="assets/hotkey-studio.svg" alt="Hotkey Studio" width="86%">
 </p>
@@ -56,9 +58,27 @@ OpenCode برای زنده نگه‌داشتن چندین session عالی اس�
 
 ## نصب
 
-### ۱. افزودن پلاگین به `tui.json`
+### ۱. از GitHub (همین حالا قابل استفاده)
 
-فایل config سراسری TUI را باز کنید (معمولاً `~/.config/opencode/tui.json`) و پلاگین را اضافه کنید:
+```bash
+git clone https://github.com/NarimanKhaleghi/opencode-hotkeys.git ~/.local/share/opencode-hotkeys
+realpath ~/.local/share/opencode-hotkeys/tui.ts
+```
+
+مسیر absolute چاپ‌شده را به config سراسری TUI (معمولاً `~/.config/opencode/tui.json`) اضافه کنید:
+
+```json
+{
+  "$schema": "https://opencode.ai/tui.json",
+  "plugin": [["/absolute/path/to/opencode-hotkeys/tui.ts", { "preset": "native" }]]
+}
+```
+
+OpenCode را دوباره اجرا کنید و با `Alt+I` بررسی کنید که پلاگین لود شده باشد.
+
+> از `tui.json` استفاده کنید، نه `opencode.json`. پلاگین‌های TUI از config مربوط به TUI لود می‌شوند.
+
+### ۲. از npm (بعد از انتشار release)
 
 ```json
 {
@@ -67,11 +87,9 @@ OpenCode برای زنده نگه‌داشتن چندین session عالی اس�
 }
 ```
 
-OpenCode را دوباره اجرا کنید و با `Alt+I` بررسی کنید که پلاگین لود شده باشد.
+سپس OpenCode را دوباره اجرا کنید و با `Alt+I` بررسی کنید که پلاگین لود شده باشد.
 
-> از `tui.json` استفاده کنید، نه `opencode.json`. پلاگین‌های TUI از config مربوط به TUI لود می‌شوند.
-
-### ۲. یا اجرای installer
+### ۳. یا اجرای installer
 
 ```bash
 npx opencode-hotkeys
@@ -90,7 +108,7 @@ npx opencode-hotkeys --uninstall
 
 با `--config <path>` فایل دیگری را هدف بگیرید و با `--print` نتیجه را بدون نوشتن ببینید.
 
-### ۳. یا نصب از CLI خود OpenCode
+### ۴. یا نصب از CLI خود OpenCode
 
 ```bash
 opencode plugin opencode-hotkeys --global
@@ -237,6 +255,10 @@ picker همان sessionها را با title، directory و زمان نسبی upd
 پکیج entry مربوط به TUI را به‌صورت TypeScript خام منتشر می‌کند، همان روشی که OpenCode پلاگین‌های TUI محلی را لود می‌کند. هیچ import runtime از `@opencode-ai/plugin` یا `@opentui/*` وجود ندارد؛ آن پکیج‌ها فقط type در زمان توسعه هستند.
 
 ## عیب‌یابی
+
+### اپلیکیشن دسکتاپ میانبرها را نشان نمی‌دهد
+
+اپلیکیشن دسکتاپ (Electron) هنوز پلاگین‌های TUI را لود نمی‌کند. به‌جای آن `opencode` را در ترمینال اجرا کنید؛ `tui.json` و این پلاگین مربوط به TUI ترمینال هستند.
 
 ### بعد از نصب هیچ اتفاقی نمی‌افتد
 

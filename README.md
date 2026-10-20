@@ -38,6 +38,8 @@
 
 It is local-first: no network calls, no telemetry, and no runtime dependency on OpenCode packages.
 
+> **Terminal TUI only.** The OpenCode desktop app (Electron) does not load TUI plugins yet. Run `opencode` in a terminal to use these shortcuts.
+
 <p align="center">
   <img src="assets/hotkey-studio.svg" alt="Hotkey Studio" width="86%">
 </p>
@@ -54,9 +56,27 @@ OpenCode is excellent at keeping many sessions alive, but switching between them
 
 ## Install
 
-### 1. Add the plugin to `tui.json`
+### 1. From GitHub (available now)
 
-Open your global TUI config (usually `~/.config/opencode/tui.json`) and add the plugin:
+```bash
+git clone https://github.com/NarimanKhaleghi/opencode-hotkeys.git ~/.local/share/opencode-hotkeys
+realpath ~/.local/share/opencode-hotkeys/tui.ts
+```
+
+Add the printed absolute path to your global TUI config (usually `~/.config/opencode/tui.json`):
+
+```json
+{
+  "$schema": "https://opencode.ai/tui.json",
+  "plugin": [["/absolute/path/to/opencode-hotkeys/tui.ts", { "preset": "native" }]]
+}
+```
+
+Restart OpenCode and press `Alt+I` to confirm that the plugin loaded.
+
+> Use `tui.json`, not `opencode.json`. TUI plugins are loaded from the TUI config.
+
+### 2. From npm (when the release is published)
 
 ```json
 {
@@ -65,11 +85,9 @@ Open your global TUI config (usually `~/.config/opencode/tui.json`) and add the 
 }
 ```
 
-Restart OpenCode and press `Alt+I` to confirm that the plugin loaded.
+Then restart OpenCode and press `Alt+I` to confirm that the plugin loaded.
 
-> Use `tui.json`, not `opencode.json`. TUI plugins are loaded from the TUI config.
-
-### 2. Or run the installer
+### 3. Or run the installer
 
 ```bash
 npx opencode-hotkeys
@@ -88,7 +106,7 @@ npx opencode-hotkeys --uninstall
 
 Use `--config <path>` to target another file and `--print` to preview the result without writing it.
 
-### 3. Or install from the OpenCode CLI
+### 4. Or install from the OpenCode CLI
 
 ```bash
 opencode plugin opencode-hotkeys --global
@@ -235,6 +253,10 @@ The picker lists the same sessions with titles, directories, and relative update
 The package ships raw TypeScript for the TUI entry, matching how OpenCode loads local TUI plugins. There are no runtime imports from `@opencode-ai/plugin` or `@opentui/*`; those packages are development-time types only.
 
 ## Troubleshooting
+
+### The desktop app does not show the shortcuts
+
+The Electron desktop app does not load TUI plugins yet. Run `opencode` in a terminal instead; `tui.json` and this plugin apply to the terminal TUI.
 
 ### Nothing happens after installing
 
