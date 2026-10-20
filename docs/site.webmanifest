@@ -1,0 +1,22 @@
+{
+  "name": "OpenCode Hotkeys",
+  "short_name": "Hotkeys",
+  "description": "Browser-style keyboard shortcuts for OpenCode Desktop.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "browser",
+  "background_color": "#f2f3ef",
+  "theme_color": "#1f35ff",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "assets/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

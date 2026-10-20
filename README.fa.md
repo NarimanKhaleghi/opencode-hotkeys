@@ -15,12 +15,12 @@
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-1f35ff" alt="MIT license"></a>
   <img src="https://img.shields.io/badge/OpenCode%20Desktop-1.19%2B-111827" alt="OpenCode Desktop 1.19+">
   <img src="https://img.shields.io/badge/TUI-1.x%20%7C%202.x-111827" alt="OpenCode TUI 1.x and 2.x">
-  <a href="https://narimankhaleghi.github.io/opencode-hotkeys/"><img src="https://img.shields.io/badge/docs-EN%20%7C%20%D9%81%D8%A7%D8%B1%D8%B3%DB%8C-1f35ff" alt="Documentation"></a>
+  <a href="https://narimankhaleghi.github.io/opencode-hotkeys/fa/"><img src="https://img.shields.io/badge/docs-EN%20%7C%20%D9%81%D8%A7%D8%B1%D8%B3%DB%8C-1f35ff" alt="Documentation"></a>
 </p>
 
 <p align="center">
   <a href="./README.md">English</a> ·
-  <a href="https://narimankhaleghi.github.io/opencode-hotkeys/">مستندات</a> ·
+  <a href="https://narimankhaleghi.github.io/opencode-hotkeys/fa/">مستندات</a> ·
   <a href="#شروع-سریع-دسکتاپ">نصب دسکتاپ</a> ·
   <a href="#نقشهٔ-کلیدهای-دسکتاپ">نقشهٔ کلیدها</a> ·
   <a href="#نسخهٔ-ترمینال-tui">نسخهٔ TUI</a> ·

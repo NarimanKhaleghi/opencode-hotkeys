@@ -1,0 +1,960 @@
+<!doctype html>
+<html
+  lang="fa"
+  dir="rtl"
+  data-theme="light"
+  data-copied="کپی شد"
+  data-copy-failed="فرمان را انتخاب و کپی کنید"
+  data-theme-dark="رفتن به تم تاریک"
+  data-theme-light="رفتن به تم روشن"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>میان‌برهای OpenCode — نقشهٔ کلیدهای دسکتاپ و راهنمای نصب</title>
+    <meta
+      name="description"
+      content="میان‌برهای کیبورد به سبک مرورگر برای OpenCode Desktop: جابه‌جایی تب‌ها، جست‌وجوی نشست‌ها و دسترسی به تنظیمات. نصب با یک فرمان در Linux، macOS و Windows و برگشت تمیز."
+    />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <meta name="author" content="Nariman Khaleghi" />
+    <link rel="canonical" href="https://narimankhaleghi.github.io/opencode-hotkeys/fa/" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://narimankhaleghi.github.io/opencode-hotkeys/"
+    />
+    <link
+      rel="alternate"
+      hreflang="fa"
+      href="https://narimankhaleghi.github.io/opencode-hotkeys/fa/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://narimankhaleghi.github.io/opencode-hotkeys/"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="OpenCode Hotkeys" />
+    <meta property="og:locale" content="fa_IR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:title" content="میان‌برهای OpenCode برای دسکتاپ" />
+    <meta
+      property="og:description"
+      content="میان‌برهای کیبورد به سبک مرورگر برای OpenCode Desktop: جابه‌جایی تب‌ها، جست‌وجوی نشست‌ها و دسترسی به تنظیمات. نصب با یک فرمان در Linux، macOS و Windows و برگشت تمیز."
+    />
+    <meta property="og:url" content="https://narimankhaleghi.github.io/opencode-hotkeys/fa/" />
+    <meta
+      property="og:image"
+      content="https://narimankhaleghi.github.io/opencode-hotkeys/assets/og-fa.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="کارت عنوان میان‌برهای OpenCode با نشانهٔ کلید H" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="میان‌برهای OpenCode برای دسکتاپ" />
+    <meta
+      name="twitter:description"
+      content="میان‌برهای کیبورد به سبک مرورگر برای OpenCode Desktop: جابه‌جایی تب‌ها، جست‌وجوی نشست‌ها و دسترسی به تنظیمات. نصب با یک فرمان در Linux، macOS و Windows و برگشت تمیز."
+    />
+    <meta
+      name="twitter:image"
+      content="https://narimankhaleghi.github.io/opencode-hotkeys/assets/og-fa.png"
+    />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f3ef" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0e13" />
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+    <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+    <link rel="manifest" href="../site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Vazirmatn:wght@400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/styles.css" />
+    <script>
+      ;(() => {
+        try {
+          const saved = localStorage.getItem("hotkeys-theme")
+          const dark = window.matchMedia("(prefers-color-scheme: dark)").matches
+          document.documentElement.dataset.theme = saved || (dark ? "dark" : "light")
+        } catch {}
+      })()
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://narimankhaleghi.github.io/opencode-hotkeys/#website",
+        "name": "OpenCode Hotkeys",
+        "alternateName": "opencode-hotkeys",
+        "url": "https://narimankhaleghi.github.io/opencode-hotkeys/",
+        "inLanguage": "fa",
+        "description": "میان‌برهای کیبورد به سبک مرورگر برای OpenCode Desktop: جابه‌جایی تب‌ها، جست‌وجوی نشست‌ها و دسترسی به تنظیمات. نصب با یک فرمان در Linux، macOS و Windows و برگشت تمیز.",
+        "publisher": {
+          "@type": "Person",
+          "name": "Nariman Khaleghi",
+          "url": "https://github.com/NarimanKhaleghi/opencode-hotkeys"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "@id": "https://narimankhaleghi.github.io/opencode-hotkeys/#app",
+        "name": "OpenCode Hotkeys",
+        "softwareVersion": "0.2.0",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Linux, macOS, Windows",
+        "url": "https://narimankhaleghi.github.io/opencode-hotkeys/",
+        "downloadUrl": "https://github.com/NarimanKhaleghi/opencode-hotkeys/releases/tag/v0.2.0",
+        "codeRepository": "https://github.com/NarimanKhaleghi/opencode-hotkeys",
+        "license": "https://opensource.org/license/mit",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "inLanguage": "fa",
+        "description": "میانبرهای کیبورد به سبک مرورگر برای OpenCode Desktop: جابه‌جایی تب‌ها، جست‌وجوی نشست‌ها و دسترسی به تنظیمات."
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "@id": "https://narimankhaleghi.github.io/opencode-hotkeys/#faq-fa",
+        "inLanguage": "fa",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "چرا روی کیبورد من فقط Alt+1…9 کار می‌کند؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "چیدمان شما برای کلیدهای حرفی کاراکتر غیرلاتین تولید می‌کند. از Alt+Enter، Alt+PageUp/Down، Alt+/ و Alt+. استفاده کنید؛ نصب‌کننده همین کلیدهای پایدار را اول می‌گذارد. Alt+T، Alt+O و Alt+K برای چیدمان‌های لاتین می‌مانند."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "آیا این OpenCode Desktop را patch یا wrap می‌کند؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "نه. فقط تنظیمات کلید خود اپ را ویرایش می‌کند. نه fork، نه اسکریپت تزریقی و نه فرایند پس‌زمینه‌ای وجود ندارد."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "چطور نصب را برمی‌گردانم؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "دستور desktop/install.mjs --uninstall را اجرا کنید یا با --restore latest جدیدترین پشتیبان را برگردانید. نصب‌کننده بعد از هر نوشتن مسیر پشتیبان را چاپ می‌کند."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "آیا به npm نیاز دارم؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "نه. نصب‌کنندهٔ دسکتاپ وابستگی npm ندارد. برای اجرا به Node.js 20+ نیاز دارید یا می‌توانید میان‌برها را از پنجرهٔ Settings بومی اپ تغییر دهید."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "آپدیت OpenCode آن را پاک می‌کند؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "فایل تنظیمات شما بعد از آپدیت اپ می‌ماند. نسخهٔ بعدی می‌تواند نام یک فرمان داخلی را عوض کند؛ بعد از آپدیت مهم --check را اجرا کنید و اگر کلیدی گم شده بود دوباره نصب کنید."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "وقتی اپ در پس‌زمینه است کار می‌کند؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "نه. این‌ها میان‌بر خود اپ هستند، نه hotkey سراسری. پنجرهٔ OpenCode Desktop باید فعال باشد."
+            }
+          }
+        ]
+      }
+    </script>
+    <script src="../assets/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">رفتن به محتوا</a>
+
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="#top" aria-label="Hotkeys for OpenCode home">
+          <span class="brand-key" aria-hidden="true">H</span>
+          <span class="brand-name"
+            >Hotkeys <span class="brand-slash">/</span>
+            <span class="brand-sub">OpenCode</span></span
+          >
+        </a>
+        <nav class="site-nav" aria-label="ناوبری اصلی">
+          <a href="#desktop">دسکتاپ</a>
+          <a href="#keymap">نقشهٔ کلیدها</a>
+          <a href="#install">نصب</a>
+          <a href="#how">نحوهٔ کار</a>
+          <a href="#tui">TUI</a>
+          <a href="#faq">پرسش‌ها</a>
+        </nav>
+        <div class="controls">
+          <a class="icon-btn" href="../" hreflang="en" lang="en" aria-label="رفتن به انگلیسی"
+            >English</a
+          >
+          <button
+            class="icon-btn theme-btn"
+            id="themeToggle"
+            type="button"
+            aria-label="Switch to dark theme"
+          >
+            <svg
+              class="sun"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4"></circle>
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"
+              ></path>
+            </svg>
+            <svg
+              class="moon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              aria-hidden="true"
+            >
+              <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8Z"></path>
+            </svg>
+          </button>
+          <a
+            class="icon-btn"
+            href="https://github.com/NarimanKhaleghi/opencode-hotkeys"
+            aria-label="GitHub repository"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.05-.01-1.9-2.78.62-3.37-1.21-3.37-1.21-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.3 9.3 0 0 1 12 6.97c.85 0 1.7.12 2.5.34 1.9-1.33 2.74-1.05 2.74-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.5-.01 2.84 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span>OpenCode Desktop · تست‌شده با 1.19.3</span>
+            </p>
+            <h1>دیگر سراغ&nbsp;<br />موس نرو.</h1>
+            <p class="lede">
+              یک لایهٔ کلید بومی برای OpenCode Desktop. تب بساز، بین تب‌ها بپر، همهٔ نشست‌ها را
+              جست‌وجو کن و بدون قطع‌شدن جریان کار به تنظیمات برس.
+            </p>
+            <div class="hero-actions">
+              <a class="button" href="#install">
+                <span>نصب با یک فرمان</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6"></path>
+                </svg>
+              </a>
+              <a class="button button-secondary" href="#keymap">دیدن نقشهٔ کلیدها</a>
+            </div>
+            <ul class="hero-meta">
+              <li>بدون patch</li>
+              <li>بدون فرایند پس‌زمینه</li>
+              <li>مستندات انگلیسی و فارسی</li>
+            </ul>
+          </div>
+
+          <div class="hero-visual" aria-hidden="true">
+            <div class="stage">
+              <div class="window">
+                <div class="window-bar">
+                  <span class="traffic"><i></i><i></i><i></i></span>
+                  <span class="window-title">OpenCode Desktop</span>
+                  <span class="focus-pill"><i></i> focused</span>
+                </div>
+                <div class="tabbar">
+                  <span class="tab active"
+                    ><span class="tab-dot"></span> Auth refactor <kbd>1</kbd></span
+                  >
+                  <span class="tab">Docs pass <kbd>2</kbd></span>
+                  <span class="tab">Tests <kbd>3</kbd></span>
+                  <span class="tab-add">+</span>
+                </div>
+                <div class="window-body">
+                  <div class="mini-side">
+                    <span class="mini-line w70"></span>
+                    <span class="mini-line w65"></span>
+                    <span class="mini-line w85"></span>
+                    <span class="mini-line w40"></span>
+                    <span class="mini-line w65"></span>
+                  </div>
+                  <div class="mini-main">
+                    <span class="mini-line w40"></span>
+                    <span class="mini-line w85"></span>
+                    <span class="mini-line w65"></span>
+                    <span class="mini-line w85"></span>
+                    <div class="mini-prompt">
+                      <span>Ask OpenCode…</span>
+                      <span class="mini-keys"><kbd>Alt</kbd><kbd>Enter</kbd></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="stage-keys">
+                <span class="stage-key"><kbd>Alt</kbd><kbd>1</kbd><em>switch</em></span>
+                <span class="stage-key"><kbd>Alt</kbd><kbd>PgDn</kbd><em>cycle</em></span>
+                <span class="stage-key"><kbd>Alt</kbd><kbd>/</kbd><em>search</em></span>
+                <span class="stage-key"><kbd>Alt</kbd><kbd>.</kbd><em>settings</em></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="desktop">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="section-kicker">سطح دسکتاپ</p>
+            <h2>یک نقشهٔ کلید. دو سطح.</h2>
+            <p class="section-lede">
+              OpenCode Desktop لایهٔ مرورگری را می‌گیرد. نسخهٔ ترمینال، Hotkey Studio کامل را نگه
+              می‌دارد. نصب و مدل ذهنی هر کدام جدا است تا هیچ‌کدام جای دیگری را نگیرد.
+            </p>
+          </div>
+          <div class="feature-grid">
+            <article class="feature">
+              <div class="feature-mark key-row" aria-hidden="true">
+                <kbd>Alt</kbd><span class="key-plus">+</span><kbd>1</kbd>
+              </div>
+              <h3>تب‌هایی که مثل تب رفتار می‌کنند</h3>
+              <p>
+                ‏Alt+Enter یک draft باز می‌کند. ‏Alt+1…9 مستقیم به تب باز می‌رود. ‏Alt+PageUp/Down
+                بدون رفتن به نوار تب، تب‌ها را می‌چرخاند.
+              </p>
+            </article>
+            <article class="feature">
+              <div class="feature-mark key-row" aria-hidden="true">
+                <kbd>Alt</kbd><span class="key-plus">+</span><kbd>PgUp</kbd>
+              </div>
+              <h3>ساخته‌شده برای چیدمان واقعی</h3>
+              <p>
+                چیدمان فارسی و عربی کاراکتر کلیدهای حرفی را عوض می‌کند. میان‌برهای اصلی از اعداد،
+                کلیدهای ناوبری و نشانه‌گذاری استفاده می‌کنند تا کار کنند.
+              </p>
+            </article>
+            <article class="feature">
+              <div class="feature-mark key-row" aria-hidden="true">
+                <kbd>Alt</kbd><span class="key-plus">+</span><kbd>.</kbd>
+              </div>
+              <h3>یک تغییر تنظیمات، نه patch</h3>
+              <p>
+                نصب‌کننده شناسهٔ فرمان‌های بومی را در تنظیمات خود OpenCode ادغام می‌کند، پشتیبان
+                می‌سازد و یک فرمان برای برگشت می‌دهد.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="keymap">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="section-kicker">نقشهٔ کلیدها</p>
+            <h2>همهٔ میان‌برهای دسکتاپ، یک‌جا.</h2>
+            <p class="section-lede">
+              این‌ها را یک‌جا نصب کنید یا از Settings → Shortcuts موارد دلخواه را بگذارید. نسخهٔ
+              حروف لاتین و پیش‌فرض‌های OpenCode هم به‌عنوان گزینه‌های اضافی حفظ می‌شوند.
+            </p>
+          </div>
+
+          <div class="table-wrap" tabindex="0" role="region" aria-label="میان‌برهای کیبورد دسکتاپ">
+            <table>
+              <caption class="sr-only">
+                میان‌برهای کیبورد دسکتاپ برای OpenCode
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">کار</th>
+                  <th scope="col">اصلی</th>
+                  <th scope="col">گزینه‌های دیگر</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>تب جدید</strong></td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Alt</kbd><span class="key-plus">+</span><kbd>Enter</kbd></span
+                    >
+                  </td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Alt</kbd><span class="key-plus">+</span><kbd>T</kbd
+                      ><span class="key-plus">·</span><kbd>Mod</kbd><span class="key-plus">+</span
+                      ><kbd>T</kbd><span class="key-plus">·</span><kbd>Mod</kbd
+                      ><span class="key-plus">+</span><kbd>N</kbd></span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>رفتن به تب ۱ تا ۹</strong></td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Alt</kbd><span class="key-plus">+</span><kbd>1…9</kbd></span
+                    >
+                  </td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Mod</kbd><span class="key-plus">+</span><kbd>1…9</kbd></span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>تب قبلی</strong></td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Alt</kbd><span class="key-plus">+</span><kbd>PageUp</kbd></span
+                    >
+                  </td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Alt</kbd><span class="key-plus">+</span><kbd>Home</kbd
+                      ><span class="key-plus">·</span><kbd>Ctrl</kbd><span class="key-plus">+</span
+                      ><kbd>Shift</kbd><span class="key-plus">+</span><kbd>Tab</kbd></span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>تب بعدی</strong></td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Alt</kbd><span class="key-plus">+</span><kbd>PageDown</kbd></span
+                    >
+                  </td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Alt</kbd><span class="key-plus">+</span><kbd>End</kbd
+                      ><span class="key-plus">·</span><kbd>Ctrl</kbd><span class="key-plus">+</span
+                      ><kbd>Tab</kbd></span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>جست‌وجوی فایل، فرمان و نشست</strong></td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Alt</kbd><span class="key-plus">+</span><kbd>/</kbd></span
+                    >
+                  </td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Alt</kbd><span class="key-plus">+</span><kbd>O</kbd
+                      ><span class="key-plus">·</span><kbd>Mod</kbd><span class="key-plus">+</span
+                      ><kbd>P</kbd></span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>باز کردن تنظیمات</strong></td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Alt</kbd><span class="key-plus">+</span><kbd>.</kbd></span
+                    >
+                  </td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Alt</kbd><span class="key-plus">+</span><kbd>K</kbd
+                      ><span class="key-plus">·</span><kbd>Mod</kbd><span class="key-plus">+</span
+                      ><kbd>,</kbd></span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>بستن تب فعلی</strong></td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Mod</kbd><span class="key-plus">+</span><kbd>W</kbd></span
+                    >
+                  </td>
+                  <td><span>پیش‌فرض خود اپ</span></td>
+                </tr>
+                <tr>
+                  <td><strong>بازگرداندن تب بسته‌شده</strong></td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Mod</kbd><span class="key-plus">+</span><kbd>Shift</kbd
+                      ><span class="key-plus">+</span><kbd>T</kbd></span
+                    >
+                  </td>
+                  <td><span>پیش‌فرض خود اپ</span></td>
+                </tr>
+                <tr>
+                  <td><strong>نشست قبلی / بعدی</strong></td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Alt</kbd><span class="key-plus">+</span><kbd>↑</kbd
+                      ><span class="key-plus">/</span><kbd>↓</kbd></span
+                    >
+                  </td>
+                  <td><span>پیش‌فرض خود اپ</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-note">
+            <span>‏Alt+1…9 بین تب‌های باز جابه‌جا می‌شود، نه تاریخچه.</span>
+            <span>همه‌چیز وقتی اپ فعال است کار می‌کند.</span>
+            <span>‏Mod در Linux و Windows یعنی Ctrl و در macOS یعنی Cmd.</span>
+          </div>
+
+          <div class="notes-grid">
+            <div class="note">
+              <h3>تب‌ها، نه تاریخچه.</h3>
+              <p>
+                ‏Alt+1…9 بین تب‌هایی که الان بازند جابه‌جا می‌شود. برای رسیدن به هر نشست از ‏Alt+/
+                استفاده کنید و از پالت جست‌وجو انتخاب کنید.
+              </p>
+            </div>
+            <div class="note">
+              <h3>چرا دو دسته کلید؟</h3>
+              <p>
+                تطبیق‌دهندهٔ دسکتاپ کاراکتری را مقایسه می‌کند که کلید تولید می‌کند، نه موقعیت فیزیکی
+                آن را. در ir+winkeys، ‏Alt+T یک کاراکتر فارسی تولید می‌کند؛ برای همین مجموعهٔ اصلی
+                از اعداد، جهت‌ها و نشانه‌گذاری استفاده می‌کند.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="install">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="section-kicker">نصب</p>
+            <h2>یک فرمان. برگشت تمیز.</h2>
+            <p class="section-lede">
+              نصب‌کننده فقط از کتابخانهٔ استاندارد Node استفاده می‌کند. فایل تنظیمات دسکتاپ را پیدا
+              می‌کند، پشتیبان می‌گیرد و ۱۴ میان‌بر را بدون دست‌زدن به بقیه ادغام می‌کند.
+            </p>
+          </div>
+
+          <div class="install-grid">
+            <ol class="steps">
+              <li>
+                <div>
+                  <h3>نصب‌کننده را اجرا کنید</h3>
+                  <p>
+                    از دستور یک‌خطی استفاده کنید یا مخزن را clone کنید. مرحلهٔ npm install وجود
+                    ندارد.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3>اپ را ببندید و دوباره باز کنید</h3>
+                  <p>
+                    OpenCode Desktop کلیدها را هنگام شروع می‌خواند. نصب‌کننده هیچ‌وقت اپ را برای شما
+                    نمی‌بندد.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3>‏Alt+Enter را بزنید</h3>
+                  <p>باید یک تب draft جدید بگیرید. با ‏Alt+1…9 بین تب‌های باز جابه‌جا شوید.</p>
+                </div>
+              </li>
+            </ol>
+
+            <div class="terminal">
+              <div class="terminal-bar">
+                <span class="traffic"><i></i><i></i><i></i></span>
+                <span class="terminal-label">terminal</span>
+                <button
+                  class="copy-btn"
+                  id="copyCommand"
+                  type="button"
+                  aria-label="Copy install command"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    aria-hidden="true"
+                  >
+                    <rect x="9" y="9" width="11" height="11" rx="2"></rect>
+                    <path d="M5 15V6a2 2 0 0 1 2-2h9"></path>
+                  </svg>
+                  <span>کپی</span>
+                </button>
+              </div>
+              <div class="os-tabs" role="tablist" aria-label="سیستم‌عامل">
+                <button
+                  class="os-tab"
+                  id="tab-unix"
+                  type="button"
+                  role="tab"
+                  aria-selected="true"
+                  aria-controls="pane-unix"
+                  data-os="unix"
+                >
+                  Linux / macOS
+                </button>
+                <button
+                  class="os-tab"
+                  id="tab-windows"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="pane-windows"
+                  tabindex="-1"
+                  data-os="windows"
+                >
+                  Windows
+                </button>
+              </div>
+              <div
+                class="os-pane"
+                id="pane-unix"
+                data-pane="unix"
+                role="tabpanel"
+                aria-labelledby="tab-unix"
+                tabindex="0"
+              >
+                <pre><span class="prompt">$ </span>curl -fsSL https://raw.githubusercontent.com/NarimanKhaleghi/opencode-hotkeys/main/install-desktop.sh | sh</pre>
+              </div>
+              <div
+                class="os-pane"
+                id="pane-windows"
+                data-pane="windows"
+                role="tabpanel"
+                aria-labelledby="tab-windows"
+                tabindex="0"
+                hidden
+              >
+                <pre><span class="prompt">PS&gt; </span>irm https://raw.githubusercontent.com/NarimanKhaleghi/opencode-hotkeys/main/install-desktop.ps1 -OutFile "$env:TEMP\opencode-hotkeys.ps1"
+<span class="prompt">PS&gt; </span>powershell -ExecutionPolicy Bypass -File "$env:TEMP\opencode-hotkeys.ps1"</pre>
+              </div>
+              <div class="terminal-foot">
+                <span>Node 20+</span>
+                <span>OpenCode Desktop 1.19+</span>
+                <span class="copy-status" id="copyStatus" role="status" aria-live="polite"></span>
+              </div>
+            </div>
+          </div>
+
+          <details class="details">
+            <summary>مرجع نصب‌کننده، نصب دستی و برگشت</summary>
+            <div class="details-body">
+              <p>
+                نصب‌کننده فایل تنظیمات خود اپ را می‌نویسد. در Windows قبل از حذف، اپ را ببندید. هر
+                نوشتن یک پشتیبان زمان‌دار می‌سازد.
+              </p>
+              <div class="mini-table">
+                <div>--check</div>
+                <div>فقط وقتی همهٔ کلیدهای مدیریت‌شده نصب باشند با کد ۰ خارج می‌شود.</div>
+                <div>--print</div>
+                <div>JSON کلیدهای مدیریت‌شده را چاپ می‌کند.</div>
+                <div>--dry-run</div>
+                <div>تغییرات را بدون نوشتن نشان می‌دهد.</div>
+                <div>--uninstall</div>
+                <div>فقط کلیدهای مدیریت‌شدهٔ تغییرنکرده را حذف می‌کند.</div>
+                <div>--restore latest</div>
+                <div>جدیدترین پشتیبان کنار default.dat را برمی‌گرداند.</div>
+              </div>
+              <p>
+                برای ویرایش دستی فایل، رشتهٔ JSON ذخیره‌شده در settings.v3 را parse کنید و این
+                ورودی‌ها را به آبجکت keybinds اضافه کنید:
+              </p>
+              <pre>
+{
+  "tab.new": "alt+enter,alt+t,mod+t,mod+n",
+  "tab.1": "alt+1,mod+1",
+  "tab.2": "alt+2,mod+2",
+  "tab.3": "alt+3,mod+3",
+  "tab.4": "alt+4,mod+4",
+  "tab.5": "alt+5,mod+5",
+  "tab.6": "alt+6,mod+6",
+  "tab.7": "alt+7,mod+7",
+  "tab.8": "alt+8,mod+8",
+  "tab.9": "alt+9,mod+9",
+  "tab.prev": "alt+pageup,alt+home,mod+option+arrowleft,ctrl+shift+tab",
+  "tab.next": "alt+pagedown,alt+end,mod+option+arrowright,ctrl+tab",
+  "file.open": "alt+/,alt+o,mod+p",
+  "settings.open": "alt+.,alt+k,mod+comma"
+}</pre>
+              <p>
+                در Linux و Windows، ‏mod یعنی Ctrl. در macOS، ‏mod یعنی Cmd. اپ دسکتاپ برای یک کار،
+                گزینه‌های جداشده با کاما را می‌پذیرد.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section class="section" id="how">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="section-kicker">زیر پوسته</p>
+            <h2>یک مسیر کوچک و برگشت‌پذیر.</h2>
+            <p class="section-lede">
+              بدون تزریق، بدون wrapper و بدون سرویس. نصب‌کننده همان فایل تنظیماتی را می‌خواند که اپ
+              استفاده می‌کند و آن را atomic برمی‌گرداند.
+            </p>
+          </div>
+          <ol class="pipeline">
+            <li>
+              <span class="pipeline-num">01</span>
+              <h3>پیدا کردن فایل</h3>
+              <p>
+                مسیرهای استاندارد Linux، macOS و Windows و همچنین OPENCODE_DESKTOP_CONFIG را بررسی
+                می‌کند.
+              </p>
+            </li>
+            <li>
+              <span class="pipeline-num">02</span>
+              <h3>Parse کردن settings.v3</h3>
+              <p>
+                اپ یک رشتهٔ JSON داخل default.dat نگه می‌دارد. فقط آبجکت keybinds آن دست می‌خورد.
+              </p>
+            </li>
+            <li>
+              <span class="pipeline-num">03</span>
+              <h3>ادغام ۱۴ کلید</h3>
+              <p>
+                کلیدهای موجود، از جمله کلیدهای خودتان، سر جایشان می‌مانند. ورودی‌های مدیریت‌شده
+                جایگزین می‌شوند.
+              </p>
+            </li>
+            <li>
+              <span class="pipeline-num">04</span>
+              <h3>پشتیبان، بعد نوشتن</h3>
+              <p>قبل از rename atomic یک پشتیبان زمان‌دار ساخته می‌شود. برگشت یک فرمان است.</p>
+            </li>
+          </ol>
+          <div class="path-line">
+            <span>Linux: ~/.config/ai.opencode.desktop/default.dat</span>
+            <span>macOS: ~/Library/Application Support/ai.opencode.desktop/default.dat</span>
+            <span>Windows: %APPDATA%\ai.opencode.desktop\default.dat</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="limits">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="section-kicker">محدودیت‌ها</p>
+            <h2>مرزهای این ابزار.</h2>
+            <p class="section-lede">
+              لایهٔ دسکتاپ عمداً باریک است. شناختن مرزها اعتماد به میان‌برها را بیشتر می‌کند.
+            </p>
+          </div>
+          <div class="limit-grid">
+            <article class="limit">
+              <h3>سرویس میان‌بر سراسری نیست</h3>
+              <p>
+                میان‌برها وقتی کار می‌کنند که OpenCode Desktop فعال باشد. listener سراسری یا فرایند
+                پس‌زمینه‌ای وجود ندارد.
+              </p>
+            </article>
+            <article class="limit">
+              <h3>استودیو در دسکتاپ نیست</h3>
+              <p>
+                اپ دسکتاپ پلاگین‌های TUI را لود نمی‌کند. Hotkey Studio در نسخهٔ ترمینال می‌ماند؛
+                دسکتاپ از Settings → Shortcuts بومی استفاده می‌کند.
+              </p>
+            </article>
+            <article class="limit">
+              <h3>شمارهٔ تب، نه تاریخچهٔ نشست</h3>
+              <p>
+                ‏Alt+1…9 فقط به تب‌های باز می‌رسد. ‏Alt+/ کل فهرست نشست‌ها را جست‌وجو می‌کند و برای
+                پرش روزمره بهتر است.
+              </p>
+            </article>
+            <article class="limit">
+              <h3>upstream می‌تواند نام فرمان را عوض کند</h3>
+              <p>
+                کلیدها به شناسهٔ فرمان‌های داخلی وصل‌اند. آپدیت بعدی اپ می‌تواند یکی را عوض کند؛ بعد
+                از آپدیت ‏--check را اجرا کنید و در صورت نیاز دوباره نصب کنید.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="tui">
+        <div class="wrap">
+          <div class="tui-panel">
+            <div>
+              <p class="section-kicker">نسخهٔ ترمینال</p>
+              <h2>استودیو هنوز در TUI است.</h2>
+              <p>
+                برای تغییر preset، quick slotهای نشست و رابط کامل تغییر کلید، از نسخهٔ ترمینال
+                استفاده کنید. این یک پلاگین جدا با نصب جداست.
+              </p>
+              <ul class="tui-list">
+                <li>presetهای بومی، مرورگر و یادداشت.</li>
+                <li>quick slotها با نشست‌های pinشده و اخیر.</li>
+                <li>Hotkey Studio با ثبت کلید، تداخل و بازنشانی.</li>
+              </ul>
+              <a
+                class="button"
+                id="tuiLink"
+                href="https://github.com/NarimanKhaleghi/opencode-hotkeys/blob/main/README.fa.md#%D9%86%D8%B3%D8%AE%D9%87%D9%94-%D8%AA%D8%B1%D9%85%DB%8C%D9%86%D8%A7%D9%84-tui"
+              >
+                <span>رفتن به راهنمای TUI</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6"></path>
+                </svg>
+              </a>
+            </div>
+            <figure class="tui-figure">
+              <img
+                src="../assets/hotkey-studio.svg"
+                width="1000"
+                height="640"
+                alt="استودیوی کلید در رابط ترمینال OpenCode"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption>Hotkey Studio · نسخهٔ ترمینال</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <div class="wrap faq-grid">
+          <div class="faq-intro">
+            <p class="section-kicker">پرسش‌ها</p>
+            <h2>قبل از نصب.</h2>
+            <p>
+              پاسخ‌های کوتاه دربارهٔ چیدمان، برگشت، آپدیت و چیزهایی که اپ دسکتاپ می‌تواند یا
+              نمی‌تواند بارگذاری کند.
+            </p>
+          </div>
+          <div class="faq-list">
+            <details>
+              <summary>چرا روی کیبورد من فقط ‏Alt+1…9 کار می‌کند؟</summary>
+              <div class="details-body">
+                <p>
+                  چیدمان شما برای کلیدهای حرفی کاراکتر غیرلاتین تولید می‌کند. از ‏Alt+Enter،
+                  ‏Alt+PageUp/Down، ‏Alt+/ و ‏Alt+. استفاده کنید؛ نصب‌کننده همین کلیدهای پایدار را
+                  اول می‌گذارد. ‏Alt+T، ‏Alt+O و ‏Alt+K برای چیدمان‌های لاتین می‌مانند.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary>آیا این OpenCode Desktop را patch یا wrap می‌کند؟</summary>
+              <div class="details-body">
+                <p>
+                  نه. فقط تنظیمات کلید خود اپ را ویرایش می‌کند. نه fork، نه اسکریپت تزریقی و نه
+                  فرایند پس‌زمینه‌ای وجود ندارد.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary>چطور نصب را برمی‌گردانم؟</summary>
+              <div class="details-body">
+                <p>
+                  دستور ‏desktop/install.mjs --uninstall را اجرا کنید یا با ‏--restore latest
+                  جدیدترین پشتیبان را برگردانید. نصب‌کننده بعد از هر نوشتن مسیر پشتیبان را چاپ
+                  می‌کند.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary>آیا به npm نیاز دارم؟</summary>
+              <div class="details-body">
+                <p>
+                  نه. نصب‌کنندهٔ دسکتاپ وابستگی npm ندارد. برای اجرا به Node.js 20+ نیاز دارید یا
+                  می‌توانید میان‌برها را از پنجرهٔ Settings بومی اپ تغییر دهید.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary>آپدیت OpenCode آن را پاک می‌کند؟</summary>
+              <div class="details-body">
+                <p>
+                  فایل تنظیمات شما بعد از آپدیت اپ می‌ماند. نسخهٔ بعدی می‌تواند نام یک فرمان داخلی
+                  را عوض کند؛ بعد از آپدیت مهم ‏--check را اجرا کنید و اگر کلیدی گم شده بود دوباره
+                  نصب کنید.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary>وقتی اپ در پس‌زمینه است کار می‌کند؟</summary>
+              <div class="details-body">
+                <p>
+                  نه. این‌ها میان‌بر خود اپ هستند، نه hotkey سراسری. پنجرهٔ OpenCode Desktop باید
+                  فعال باشد.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer-grid">
+        <div>
+          <a class="brand" href="#top">
+            <span class="brand-key" aria-hidden="true">H</span>
+            <span class="brand-name"
+              >Hotkeys <span class="brand-slash">/</span>
+              <span class="brand-sub">OpenCode</span></span
+            >
+          </a>
+          <p class="footer-tagline">
+            کلیدهای بومی برای OpenCode Desktop و یک استودیوی کامل برای ترمینال.
+          </p>
+          <span class="footer-key" aria-hidden="true">H</span>
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/NarimanKhaleghi/opencode-hotkeys">مخزن GitHub</a>
+          <a href="https://github.com/NarimanKhaleghi/opencode-hotkeys#readme">README انگلیسی</a>
+          <a href="https://github.com/NarimanKhaleghi/opencode-hotkeys/blob/main/README.fa.md"
+            >README فارسی</a
+          >
+          <a href="https://github.com/NarimanKhaleghi/opencode-hotkeys/issues">گزارش مشکل</a>
+          <a href="https://github.com/NarimanKhaleghi/opencode-hotkeys/releases/latest"
+            >دانلود نسخه</a
+          >
+        </div>
+        <div class="footer-meta">
+          <span>MIT · 2026</span>
+          <a href="#top">بازگشت به بالا</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
