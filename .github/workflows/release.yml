@@ -6,11 +6,10 @@ on:
       - "v*"
 
 permissions:
-  contents: read
-  id-token: write
+  contents: write
 
 jobs:
-  publish:
+  release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,9 +19,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          registry-url: https://registry.npmjs.org
       - run: bun install --frozen-lockfile
       - run: bun run check
-      - run: npm publish --access public --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: npm pack
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            opencode-hotkeys-*.tgz
+            install-desktop.sh
+            install-desktop.ps1

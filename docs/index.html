@@ -1,0 +1,3067 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hotkeys for OpenCode — Desktop keymap and docs</title>
+    <meta
+      name="description"
+      content="Native browser-style hotkeys for OpenCode Desktop. Install tab switching, search, and settings shortcuts with one command. English and Persian documentation."
+    />
+    <meta name="theme-color" content="#f2f3ef" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Hotkeys for OpenCode" />
+    <meta
+      property="og:description"
+      content="Native browser-style hotkeys for OpenCode Desktop. One command, no patch, reversible."
+    />
+    <meta property="og:url" content="https://narimankhaleghi.github.io/opencode-hotkeys/" />
+    <link rel="canonical" href="https://narimankhaleghi.github.io/opencode-hotkeys/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Vazirmatn:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      ;(() => {
+        try {
+          const savedTheme = localStorage.getItem("hotkeys-theme")
+          const dark = window.matchMedia("(prefers-color-scheme: dark)").matches
+          document.documentElement.dataset.theme = savedTheme || (dark ? "dark" : "light")
+          const savedLang = localStorage.getItem("hotkeys-lang")
+          if (savedLang === "fa") {
+            document.documentElement.lang = "fa"
+            document.documentElement.dir = "rtl"
+            document.documentElement.dataset.lang = "fa"
+          }
+        } catch {}
+      })()
+    </script>
+    <style>
+      :root {
+        --font-display: "Bricolage Grotesque", "IBM Plex Sans", system-ui, sans-serif;
+        --font-sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+        --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+        --bg: #f2f3ef;
+        --surface: #fafaf7;
+        --surface-2: #eceee8;
+        --ink: #11161a;
+        --ink-2: #4f5a63;
+        --ink-3: #5f6c76;
+        --line: #d5dad3;
+        --line-strong: #b8c0b8;
+        --accent: #2337f5;
+        --accent-ink: #ffffff;
+        --accent-soft: #e8eaff;
+        --accent-deep: #1828bd;
+        --key: #ffffff;
+        --key-edge: #c3cbc3;
+        --stage: #10161d;
+        --stage-2: #18212b;
+        --stage-ink: #eef2f4;
+        --stage-line: #2b3743;
+        --stage-muted: #93a1ae;
+        --code-bg: #0d131a;
+        --code-ink: #edf1f5;
+        --code-muted: #8f9eac;
+        --warm: #ffb000;
+        --radius: 12px;
+        --shadow: 0 24px 70px -34px rgb(17 22 26 / 38%);
+        color-scheme: light;
+      }
+
+      html[data-theme="dark"] {
+        --bg: #0a0e13;
+        --surface: #111820;
+        --surface-2: #151e27;
+        --ink: #edf1f3;
+        --ink-2: #a6b2bd;
+        --ink-3: #7f8d99;
+        --line: #252f39;
+        --line-strong: #3a4753;
+        --accent: #8794ff;
+        --accent-ink: #0a0e13;
+        --accent-soft: #1a2249;
+        --accent-deep: #b8c1ff;
+        --key: #1a232d;
+        --key-edge: #3a4855;
+        --stage: #0e151d;
+        --stage-2: #17212c;
+        --stage-ink: #eef2f4;
+        --stage-line: #2b3743;
+        --stage-muted: #93a1ae;
+        --code-bg: #080d12;
+        --code-ink: #edf1f5;
+        --code-muted: #8f9eac;
+        --shadow: 0 24px 70px -30px rgb(0 0 0 / 70%);
+        color-scheme: dark;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 92px;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: var(--font-sans);
+        font-size: 16px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      html[lang="fa"] body {
+        font-family: "Vazirmatn", var(--font-sans);
+        line-height: 1.85;
+      }
+
+      html[lang="fa"] {
+        --font-display: "Vazirmatn", var(--font-sans);
+      }
+
+      ::selection {
+        background: var(--accent);
+        color: var(--accent-ink);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      button {
+        font: inherit;
+        color: inherit;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: var(--font-display);
+        line-height: 1.04;
+        letter-spacing: -0.04em;
+        margin: 0;
+        text-wrap: balance;
+      }
+
+      html[lang="fa"] h1,
+      html[lang="fa"] h2,
+      html[lang="fa"] h3 {
+        letter-spacing: 0;
+        line-height: 1.35;
+      }
+
+      p,
+      ul,
+      ol,
+      figure {
+        margin: 0;
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: var(--font-mono);
+      }
+
+      code {
+        font-size: 0.92em;
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+        border-radius: 5px;
+        padding: 0.1em 0.35em;
+      }
+
+      kbd {
+        display: inline-flex;
+        min-width: 28px;
+        height: 29px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 8px;
+        border: 1px solid var(--key-edge);
+        border-radius: 6px;
+        background: var(--key);
+        box-shadow: 0 2px 0 var(--key-edge);
+        color: var(--ink);
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1;
+        direction: ltr;
+        unicode-bidi: isolate;
+        white-space: nowrap;
+        transition:
+          transform 120ms ease,
+          box-shadow 120ms ease;
+      }
+
+      .key-row {
+        display: inline-flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 4px;
+        direction: ltr;
+        unicode-bidi: isolate;
+      }
+
+      .key-plus {
+        color: var(--ink-3);
+        font-family: var(--font-mono);
+        font-size: 12px;
+      }
+
+      .skip {
+        position: fixed;
+        inset-block-start: 10px;
+        inset-inline-start: 10px;
+        z-index: 100;
+        transform: translateY(-160%);
+        background: var(--accent);
+        color: var(--accent-ink);
+        padding: 10px 14px;
+        border-radius: 8px;
+        font-weight: 600;
+      }
+
+      .skip:focus {
+        transform: none;
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 3px;
+      }
+
+      .wrap {
+        width: min(1180px, calc(100% - 48px));
+        margin-inline: auto;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        border-block-end: 1px solid var(--line);
+        background: color-mix(in srgb, var(--bg) 86%, transparent);
+        backdrop-filter: blur(18px);
+      }
+
+      .header-inner {
+        min-height: 68px;
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+      }
+
+      .brand-key {
+        display: grid;
+        place-items: center;
+        width: 32px;
+        height: 32px;
+        border: 1px solid var(--key-edge);
+        border-radius: 7px;
+        background: var(--key);
+        box-shadow: 0 3px 0 var(--key-edge);
+        color: var(--accent);
+        font-family: var(--font-mono);
+        font-size: 15px;
+        font-weight: 600;
+      }
+
+      .brand-name {
+        font-family: var(--font-display);
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+
+      .brand-slash {
+        color: var(--ink-3);
+        padding: 0 2px;
+      }
+
+      .brand-sub {
+        color: var(--ink-2);
+        font-weight: 500;
+      }
+
+      .site-nav {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        margin-inline-start: auto;
+        font-size: 14px;
+        color: var(--ink-2);
+      }
+
+      .site-nav a {
+        position: relative;
+        padding-block: 4px;
+      }
+
+      .site-nav a::after {
+        content: "";
+        position: absolute;
+        inset-inline: 0;
+        inset-block-end: 0;
+        height: 1px;
+        background: var(--ink);
+        transform: scaleX(0);
+        transform-origin: inline-start;
+        transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .site-nav a:hover::after,
+      .site-nav a:focus-visible::after {
+        transform: scaleX(1);
+      }
+
+      .controls {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-inline-start: 8px;
+      }
+
+      .icon-btn {
+        display: inline-flex;
+        min-width: 38px;
+        height: 36px;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 0 9px;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        background: transparent;
+        color: var(--ink-2);
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .icon-btn:hover {
+        border-color: var(--line);
+        background: var(--surface);
+        color: var(--ink);
+      }
+
+      .icon-btn svg {
+        width: 17px;
+        height: 17px;
+      }
+
+      .theme-btn .moon {
+        display: none;
+      }
+
+      html[data-theme="dark"] .theme-btn .sun {
+        display: none;
+      }
+
+      html[data-theme="dark"] .theme-btn .moon {
+        display: block;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding-block: 78px 104px;
+        border-block-end: 1px solid var(--line);
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(to right, var(--line) 1px, transparent 1px),
+          linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+        background-size: 44px 44px;
+        opacity: 0.5;
+        mask-image: linear-gradient(to bottom, black, transparent 72%);
+        pointer-events: none;
+      }
+
+      .hero-grid {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+        gap: 64px;
+        align-items: center;
+      }
+
+      .hero-grid > * {
+        min-width: 0;
+      }
+
+      .eyebrow,
+      .section-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--ink-2);
+        letter-spacing: 0.01em;
+      }
+
+      .status-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 0 3px var(--accent-soft);
+        animation: pulse 2.8s ease-in-out infinite;
+      }
+
+      .hero h1 {
+        margin-block-start: 22px;
+        font-size: clamp(56px, 7.4vw, 96px);
+        font-weight: 600;
+        letter-spacing: -0.065em;
+      }
+
+      html[lang="fa"] .hero h1 {
+        font-size: clamp(46px, 6.2vw, 78px);
+        font-weight: 700;
+      }
+
+      .lede {
+        max-width: 56ch;
+        margin-block-start: 26px;
+        color: var(--ink-2);
+        font-size: clamp(17px, 1.6vw, 19px);
+        line-height: 1.65;
+        text-wrap: pretty;
+      }
+
+      html[lang="fa"] .lede {
+        line-height: 1.95;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-block-start: 32px;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        padding: 0 18px;
+        border: 1px solid var(--accent);
+        border-radius: 9px;
+        background: var(--accent);
+        box-shadow: 0 3px 0 var(--accent-deep);
+        color: var(--accent-ink);
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition:
+          transform 140ms ease,
+          box-shadow 140ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 0 var(--accent-deep);
+      }
+
+      .button:active {
+        transform: translateY(2px);
+        box-shadow: 0 1px 0 var(--accent-deep);
+      }
+
+      .button svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .button-secondary {
+        border-color: var(--line-strong);
+        background: var(--surface);
+        box-shadow: 0 3px 0 var(--line);
+        color: var(--ink);
+      }
+
+      .button-secondary:hover {
+        box-shadow: 0 4px 0 var(--line);
+      }
+
+      .button-secondary:active {
+        box-shadow: 0 1px 0 var(--line);
+      }
+
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 18px;
+        margin-block-start: 26px;
+        padding: 0;
+        list-style: none;
+        color: var(--ink-3);
+        font-size: 13px;
+      }
+
+      .hero-meta li {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+      }
+
+      .hero-meta li::before {
+        content: "";
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--line-strong);
+      }
+
+      .hero-visual {
+        position: relative;
+        direction: ltr;
+        unicode-bidi: isolate;
+      }
+
+      .stage {
+        position: relative;
+        padding: 18px;
+        border: 1px solid var(--stage-line);
+        border-radius: 18px;
+        background:
+          linear-gradient(var(--stage-line) 1px, transparent 1px),
+          linear-gradient(90deg, var(--stage-line) 1px, transparent 1px), var(--stage);
+        background-size: 28px 28px;
+        box-shadow: var(--shadow);
+        animation: stage-in 800ms cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+
+      .window {
+        overflow: hidden;
+        border: 1px solid var(--stage-line);
+        border-radius: 12px;
+        background: var(--stage-2);
+      }
+
+      .window-bar {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        height: 42px;
+        padding: 0 13px;
+        border-block-end: 1px solid var(--stage-line);
+        color: var(--stage-muted);
+        font-size: 11px;
+      }
+
+      .traffic {
+        display: inline-flex;
+        gap: 5px;
+      }
+
+      .traffic i {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #465563;
+      }
+
+      .traffic i:first-child {
+        background: #c75b53;
+      }
+
+      .traffic i:nth-child(2) {
+        background: #c99a4a;
+      }
+
+      .traffic i:nth-child(3) {
+        background: #5f9c70;
+      }
+
+      .window-title {
+        font-family: var(--font-mono);
+        letter-spacing: 0.01em;
+      }
+
+      .focus-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        margin-inline-start: auto;
+        padding: 3px 8px;
+        border: 1px solid var(--stage-line);
+        border-radius: 99px;
+        color: var(--stage-ink);
+      }
+
+      .focus-pill i {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--warm);
+      }
+
+      .tabbar {
+        display: flex;
+        align-items: stretch;
+        gap: 2px;
+        min-height: 42px;
+        padding: 7px 8px 0;
+        border-block-end: 1px solid var(--stage-line);
+        overflow: hidden;
+      }
+
+      .tab {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        max-width: 150px;
+        padding: 8px 10px;
+        border: 1px solid transparent;
+        border-block-end: 0;
+        border-radius: 7px 7px 0 0;
+        color: var(--stage-muted);
+        font-size: 11px;
+        white-space: nowrap;
+      }
+
+      .tab kbd {
+        min-width: 17px;
+        height: 17px;
+        padding: 0 4px;
+        border-color: var(--stage-line);
+        background: var(--stage);
+        box-shadow: none;
+        color: var(--stage-muted);
+        font-size: 9px;
+      }
+
+      .tab.active {
+        border-color: var(--stage-line);
+        background: var(--stage);
+        color: var(--stage-ink);
+      }
+
+      .tab.active kbd {
+        border-color: var(--accent);
+        background: var(--accent);
+        color: var(--accent-ink);
+      }
+
+      .tab-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+
+      .tab-add {
+        display: grid;
+        place-items: center;
+        width: 30px;
+        color: var(--stage-muted);
+        font-size: 17px;
+      }
+
+      .window-body {
+        display: grid;
+        grid-template-columns: 96px minmax(0, 1fr);
+        min-height: 236px;
+      }
+
+      .mini-side {
+        padding: 16px 12px;
+        border-inline-end: 1px solid var(--stage-line);
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .mini-line {
+        display: block;
+        height: 5px;
+        border-radius: 99px;
+        background: var(--stage-line);
+      }
+
+      .mini-line.w40 {
+        width: 40%;
+      }
+
+      .mini-line.w65 {
+        width: 65%;
+      }
+
+      .mini-line.w70 {
+        width: 70%;
+        background: #2f4050;
+      }
+
+      .mini-line.w85 {
+        width: 85%;
+      }
+
+      .mini-main {
+        display: flex;
+        flex-direction: column;
+        gap: 13px;
+        padding: 22px 18px 16px;
+      }
+
+      .mini-main .mini-line:nth-child(1) {
+        height: 8px;
+        background: #30404f;
+        margin-block-end: 8px;
+      }
+
+      .mini-main .mini-line:nth-child(2) {
+        width: 78%;
+      }
+
+      .mini-main .mini-line:nth-child(3) {
+        width: 54%;
+      }
+
+      .mini-main .mini-line:nth-child(4) {
+        width: 68%;
+      }
+
+      .mini-prompt {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-block-start: auto;
+        padding: 9px 10px;
+        border: 1px solid var(--stage-line);
+        border-radius: 7px;
+        color: var(--stage-muted);
+        font-size: 10px;
+      }
+
+      .mini-prompt .mini-keys {
+        display: inline-flex;
+        gap: 3px;
+        margin-inline-start: auto;
+      }
+
+      .mini-prompt kbd {
+        min-width: 22px;
+        height: 21px;
+        padding: 0 5px;
+        border-color: var(--stage-line);
+        background: var(--stage);
+        box-shadow: none;
+        color: var(--stage-ink);
+        font-size: 9px;
+      }
+
+      .stage-keys {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        justify-content: center;
+        margin-block-start: 16px;
+        padding-inline: 8px;
+      }
+
+      .stage-key {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 7px 8px;
+        border: 1px solid var(--stage-line);
+        border-radius: 8px;
+        background: rgb(255 255 255 / 4%);
+        color: var(--stage-muted);
+        font-family: var(--font-mono);
+        font-size: 9px;
+        animation: key-in 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+      }
+
+      .stage-key:nth-child(2) {
+        animation-delay: 80ms;
+      }
+
+      .stage-key:nth-child(3) {
+        animation-delay: 160ms;
+      }
+
+      .stage-key:nth-child(4) {
+        animation-delay: 240ms;
+      }
+
+      .stage-key kbd {
+        min-width: 21px;
+        height: 21px;
+        padding: 0 4px;
+        border-color: var(--stage-line);
+        background: var(--stage);
+        box-shadow: 0 2px 0 #070b0f;
+        color: var(--stage-ink);
+        font-size: 9px;
+      }
+
+      .stage-key:first-child kbd {
+        border-color: var(--accent);
+        background: var(--accent);
+        box-shadow: 0 2px 0 var(--accent-deep);
+        color: var(--accent-ink);
+      }
+
+      .stage-key em {
+        font-style: normal;
+        color: var(--stage-muted);
+      }
+
+      .section {
+        padding-block: 92px;
+        border-block-end: 1px solid var(--line);
+      }
+
+      .section-head {
+        max-width: 710px;
+      }
+
+      .section-head h2 {
+        margin-block-start: 16px;
+        font-size: clamp(34px, 4.2vw, 52px);
+        font-weight: 600;
+      }
+
+      html[lang="fa"] .section-head h2 {
+        font-size: clamp(30px, 3.8vw, 44px);
+      }
+
+      .section-lede {
+        margin-block-start: 18px;
+        color: var(--ink-2);
+        font-size: 17px;
+        line-height: 1.7;
+        text-wrap: pretty;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0;
+        margin-block-start: 50px;
+        border-block-start: 1px solid var(--line);
+      }
+
+      .feature {
+        padding: 26px 30px 0;
+        border-inline-start: 1px solid var(--line);
+      }
+
+      .feature:first-child {
+        padding-inline-start: 0;
+        border-inline-start: 0;
+      }
+
+      .feature:last-child {
+        padding-inline-end: 0;
+      }
+
+      .feature-mark {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        margin-block-end: 20px;
+      }
+
+      .feature h3 {
+        font-size: 21px;
+        font-weight: 600;
+        letter-spacing: -0.025em;
+      }
+
+      .feature p {
+        margin-block-start: 12px;
+        color: var(--ink-2);
+        font-size: 14.5px;
+        line-height: 1.7;
+      }
+
+      .table-wrap {
+        margin-block-start: 42px;
+        overflow-x: auto;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--surface);
+      }
+
+      table {
+        width: 100%;
+        min-width: 700px;
+        border-collapse: separate;
+        border-spacing: 0;
+        font-size: 14px;
+      }
+
+      th,
+      td {
+        padding: 15px 18px;
+        border-block-end: 1px solid var(--line);
+        text-align: start;
+        vertical-align: middle;
+      }
+
+      th {
+        background: var(--surface-2);
+        color: var(--ink-2);
+        font-family: var(--font-mono);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+      }
+
+      tr:last-child td {
+        border-block-end: 0;
+      }
+
+      tbody tr {
+        transition: background 140ms ease;
+      }
+
+      tbody tr:hover {
+        background: var(--accent-soft);
+      }
+
+      td:first-child {
+        color: var(--ink-2);
+      }
+
+      td:first-child strong {
+        color: var(--ink);
+        font-weight: 500;
+      }
+
+      .table-note {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 18px;
+        margin-block-start: 12px;
+        color: var(--ink-3);
+        font-size: 12.5px;
+      }
+
+      .notes-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 38px;
+        margin-block-start: 48px;
+      }
+
+      .note {
+        padding-block-start: 18px;
+        border-block-start: 2px solid var(--ink);
+      }
+
+      .note h3 {
+        font-size: 18px;
+        font-weight: 600;
+      }
+
+      .note p {
+        margin-block-start: 8px;
+        color: var(--ink-2);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .install-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+        gap: 56px;
+        align-items: start;
+        margin-block-start: 48px;
+      }
+
+      .steps {
+        display: grid;
+        gap: 0;
+        padding: 0;
+        list-style: none;
+        counter-reset: install-step;
+        border-block-start: 1px solid var(--line);
+      }
+
+      .steps li {
+        counter-increment: install-step;
+        display: grid;
+        grid-template-columns: 38px minmax(0, 1fr);
+        gap: 14px;
+        padding-block: 22px;
+        border-block-end: 1px solid var(--line);
+      }
+
+      .steps li::before {
+        content: "0" counter(install-step);
+        padding-block-start: 2px;
+        color: var(--accent);
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      .steps h3 {
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: -0.015em;
+      }
+
+      .steps p {
+        margin-block-start: 5px;
+        color: var(--ink-2);
+        font-size: 13.5px;
+        line-height: 1.65;
+      }
+
+      .terminal {
+        overflow: hidden;
+        border: 1px solid var(--stage-line);
+        border-radius: 14px;
+        background: var(--code-bg);
+        box-shadow: var(--shadow);
+      }
+
+      .terminal-bar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 42px;
+        padding: 0 13px;
+        border-block-end: 1px solid #26313c;
+        color: var(--code-muted);
+        font-family: var(--font-mono);
+        font-size: 10px;
+      }
+
+      .terminal-bar .traffic i {
+        background: #3f4c58;
+      }
+
+      .terminal-bar .traffic i:first-child {
+        background: #c75b53;
+      }
+
+      .terminal-bar .traffic i:nth-child(2) {
+        background: #c99a4a;
+      }
+
+      .terminal-bar .traffic i:nth-child(3) {
+        background: #5f9c70;
+      }
+
+      .terminal-label {
+        margin-inline-start: 4px;
+      }
+
+      .copy-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        min-height: 28px;
+        margin-inline-start: auto;
+        padding: 0 8px;
+        border: 1px solid #2f3c48;
+        border-radius: 5px;
+        background: transparent;
+        color: var(--code-muted);
+        font-family: var(--font-mono);
+        font-size: 10px;
+        cursor: pointer;
+        direction: ltr;
+      }
+
+      .copy-btn:hover {
+        border-color: #536473;
+        color: var(--code-ink);
+      }
+
+      .copy-btn svg {
+        width: 12px;
+        height: 12px;
+      }
+
+      .os-tabs {
+        display: flex;
+        gap: 4px;
+        padding: 12px 13px 0;
+      }
+
+      .os-tab {
+        min-height: 30px;
+        padding: 0 10px;
+        border: 1px solid transparent;
+        border-radius: 5px;
+        background: transparent;
+        color: var(--code-muted);
+        font-family: var(--font-mono);
+        font-size: 10px;
+        cursor: pointer;
+      }
+
+      .os-tab[aria-selected="true"] {
+        border-color: #344250;
+        background: #151e27;
+        color: var(--code-ink);
+      }
+
+      .os-tab:hover {
+        color: var(--code-ink);
+      }
+
+      .os-pane {
+        padding: 10px 18px 20px;
+      }
+
+      .os-pane pre {
+        margin: 0;
+        padding: 14px 0 0;
+        color: var(--code-ink);
+        font-size: 12px;
+        line-height: 1.8;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        direction: ltr;
+        text-align: left;
+      }
+
+      .os-pane .prompt {
+        color: #7dd3a7;
+        user-select: none;
+      }
+
+      .terminal-foot {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 14px;
+        padding: 0 18px 18px;
+        color: var(--code-muted);
+        font-family: var(--font-mono);
+        font-size: 10px;
+      }
+
+      .copy-status {
+        min-height: 1.2em;
+        color: #7dd3a7;
+      }
+
+      .details {
+        margin-block-start: 34px;
+        border-block-start: 1px solid var(--line);
+      }
+
+      details {
+        border-block-end: 1px solid var(--line);
+      }
+
+      summary {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-block: 18px;
+        cursor: pointer;
+        font-weight: 500;
+        list-style: none;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      summary::after {
+        content: "+";
+        margin-inline-start: auto;
+        color: var(--ink-3);
+        font-family: var(--font-mono);
+        font-size: 18px;
+        line-height: 1;
+      }
+
+      details[open] summary::after {
+        content: "−";
+      }
+
+      .details-body {
+        padding-block-end: 24px;
+        color: var(--ink-2);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .details-body p + p,
+      .details-body p + pre,
+      .details-body pre + p,
+      .details-body .mini-table + p {
+        margin-block-start: 14px;
+      }
+
+      .details-body pre {
+        overflow-x: auto;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface-2);
+        color: var(--ink);
+        font-size: 11.5px;
+        line-height: 1.6;
+        direction: ltr;
+        text-align: left;
+      }
+
+      .mini-table {
+        display: grid;
+        grid-template-columns: 190px minmax(0, 1fr);
+        margin-block-start: 14px;
+        border-block-start: 1px solid var(--line);
+        font-size: 13px;
+      }
+
+      .mini-table div {
+        padding: 9px 10px;
+        border-block-end: 1px solid var(--line);
+      }
+
+      .mini-table div:nth-child(odd) {
+        color: var(--ink-3);
+        font-family: var(--font-mono);
+        font-size: 11px;
+      }
+
+      .pipeline {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0;
+        margin-block-start: 48px;
+        padding: 0;
+        list-style: none;
+        border-block-start: 1px solid var(--line);
+      }
+
+      .pipeline li {
+        position: relative;
+        padding: 24px 24px 0;
+        border-inline-start: 1px solid var(--line);
+      }
+
+      .pipeline li:first-child {
+        padding-inline-start: 0;
+        border-inline-start: 0;
+      }
+
+      .pipeline li:last-child {
+        padding-inline-end: 0;
+      }
+
+      .pipeline-num {
+        display: block;
+        margin-block-end: 16px;
+        color: var(--accent);
+        font-family: var(--font-mono);
+        font-size: 11px;
+      }
+
+      .pipeline h3 {
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: -0.015em;
+      }
+
+      .pipeline p {
+        margin-block-start: 8px;
+        color: var(--ink-2);
+        font-size: 13.5px;
+        line-height: 1.65;
+      }
+
+      .path-line {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 18px;
+        margin-block-start: 32px;
+        padding-block-start: 18px;
+        border-block-start: 1px solid var(--line);
+        color: var(--ink-3);
+        font-family: var(--font-mono);
+        font-size: 11px;
+        direction: ltr;
+      }
+
+      .limit-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        margin-block-start: 44px;
+        border-block-start: 1px solid var(--line);
+      }
+
+      .limit {
+        padding: 24px 30px 26px;
+        border-block-end: 1px solid var(--line);
+        border-inline-start: 1px solid var(--line);
+      }
+
+      .limit:nth-child(odd) {
+        padding-inline-start: 0;
+        border-inline-start: 0;
+      }
+
+      .limit:nth-child(even) {
+        padding-inline-end: 0;
+      }
+
+      .limit h3 {
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: -0.015em;
+      }
+
+      .limit p {
+        margin-block-start: 8px;
+        color: var(--ink-2);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .tui-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        gap: 44px;
+        align-items: center;
+        padding: 44px;
+        border: 1px solid var(--stage-line);
+        border-radius: 18px;
+        background: var(--stage);
+        color: var(--stage-ink);
+      }
+
+      .tui-panel .section-kicker {
+        color: var(--stage-muted);
+      }
+
+      .tui-panel h2 {
+        margin-block-start: 14px;
+        font-size: clamp(30px, 3.6vw, 44px);
+        font-weight: 600;
+      }
+
+      .tui-panel p {
+        margin-block-start: 16px;
+        color: #b8c4ce;
+        font-size: 15px;
+        line-height: 1.75;
+      }
+
+      .tui-list {
+        display: grid;
+        gap: 10px;
+        margin-block-start: 22px;
+        padding: 0;
+        list-style: none;
+        color: #dbe3e9;
+        font-size: 14px;
+      }
+
+      .tui-list li {
+        display: grid;
+        grid-template-columns: 18px minmax(0, 1fr);
+        gap: 9px;
+      }
+
+      .tui-list li::before {
+        content: "→";
+        color: var(--accent);
+        font-family: var(--font-mono);
+        font-size: 12px;
+      }
+
+      .tui-panel .button {
+        margin-block-start: 28px;
+      }
+
+      .tui-figure {
+        margin: 0;
+        direction: ltr;
+      }
+
+      .tui-figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid var(--stage-line);
+        border-radius: 10px;
+        background: #0b1016;
+      }
+
+      .tui-figure figcaption {
+        margin-block-start: 10px;
+        color: var(--stage-muted);
+        font-family: var(--font-mono);
+        font-size: 10px;
+      }
+
+      .faq-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+        gap: 64px;
+        align-items: start;
+      }
+
+      .faq-intro {
+        position: sticky;
+        top: 100px;
+      }
+
+      .faq-intro h2 {
+        margin-block-start: 16px;
+        font-size: clamp(32px, 3.8vw, 48px);
+        font-weight: 600;
+      }
+
+      .faq-intro p {
+        margin-block-start: 16px;
+        color: var(--ink-2);
+        font-size: 15px;
+        line-height: 1.7;
+      }
+
+      .faq-list {
+        border-block-start: 1px solid var(--line);
+      }
+
+      .faq-list summary {
+        font-size: 15px;
+      }
+
+      .faq-list .details-body {
+        padding-inline-end: 28px;
+      }
+
+      .footer {
+        padding-block: 44px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto auto;
+        gap: 36px;
+        align-items: start;
+      }
+
+      .footer-tagline {
+        max-width: 34ch;
+        margin-block-start: 12px;
+        color: var(--ink-2);
+        font-size: 13.5px;
+        line-height: 1.65;
+      }
+
+      .footer-links {
+        display: grid;
+        gap: 9px;
+        font-size: 13px;
+        color: var(--ink-2);
+      }
+
+      .footer-links a:hover {
+        color: var(--accent);
+      }
+
+      .footer-meta {
+        display: grid;
+        justify-items: end;
+        gap: 9px;
+        color: var(--ink-3);
+        font-family: var(--font-mono);
+        font-size: 11px;
+        text-align: end;
+      }
+
+      .footer-meta a {
+        color: var(--ink-2);
+      }
+
+      .footer-meta a:hover {
+        color: var(--accent);
+      }
+
+      .footer-key {
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        margin-block-start: 20px;
+        border: 1px solid var(--key-edge);
+        border-radius: 7px;
+        background: var(--key);
+        box-shadow: 0 3px 0 var(--key-edge);
+        color: var(--accent);
+        font-family: var(--font-mono);
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      @keyframes stage-in {
+        from {
+          opacity: 0;
+          transform: translateY(14px) scale(0.985);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @keyframes key-in {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          box-shadow: 0 0 0 3px var(--accent-soft);
+        }
+        50% {
+          box-shadow: 0 0 0 5px var(--accent-soft);
+        }
+      }
+
+      @media (max-width: 860px) {
+        .site-nav {
+          display: none;
+        }
+      }
+
+      @media (max-width: 980px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+          gap: 44px;
+        }
+
+        .hero-visual {
+          max-width: 620px;
+        }
+
+        .feature-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .feature,
+        .feature:first-child,
+        .feature:last-child {
+          padding: 22px 0;
+          border-inline-start: 0;
+          border-block-start: 1px solid var(--line);
+        }
+
+        .feature:first-child {
+          border-block-start: 0;
+        }
+
+        .install-grid {
+          grid-template-columns: 1fr;
+          gap: 34px;
+        }
+
+        .pipeline {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .pipeline li:nth-child(3) {
+          padding-inline-start: 0;
+          border-inline-start: 0;
+        }
+
+        .tui-panel {
+          grid-template-columns: 1fr;
+        }
+
+        .faq-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .faq-intro {
+          position: static;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr auto;
+        }
+
+        .footer-meta {
+          grid-column: 1 / -1;
+          justify-items: start;
+          text-align: start;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .wrap {
+          width: calc(100% - 32px);
+        }
+
+        .header-inner {
+          min-height: 60px;
+          gap: 12px;
+        }
+
+        .controls {
+          margin-inline-start: auto;
+        }
+
+        .brand-name {
+          font-size: 14px;
+        }
+
+        .brand-sub,
+        .brand-slash {
+          display: none;
+        }
+
+        .hero {
+          padding-block: 48px 70px;
+        }
+
+        .hero h1 {
+          font-size: clamp(44px, 13vw, 64px);
+        }
+
+        .tabbar .tab:nth-of-type(3),
+        .tabbar .tab-add {
+          display: none;
+        }
+
+        .hero-actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .button {
+          width: 100%;
+        }
+
+        .hero-meta {
+          display: grid;
+          gap: 5px;
+        }
+
+        .section {
+          padding-block: 66px;
+        }
+
+        .section-lede {
+          font-size: 15.5px;
+        }
+
+        .notes-grid,
+        .limit-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .limit,
+        .limit:nth-child(odd),
+        .limit:nth-child(even) {
+          padding: 20px 0;
+          border-inline-start: 0;
+        }
+
+        .pipeline {
+          grid-template-columns: 1fr;
+        }
+
+        .pipeline li,
+        .pipeline li:nth-child(3) {
+          padding: 20px 0;
+          border-inline-start: 0;
+          border-block-start: 1px solid var(--line);
+        }
+
+        .pipeline li:first-child {
+          border-block-start: 0;
+        }
+
+        .tui-panel {
+          padding: 26px 20px;
+          border-radius: 12px;
+        }
+
+        .mini-table {
+          grid-template-columns: 1fr;
+        }
+
+        .mini-table div:nth-child(odd) {
+          padding-block-end: 0;
+          border-block-end: 0;
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 26px;
+        }
+
+        .footer-meta {
+          grid-column: auto;
+        }
+
+        .window-body {
+          grid-template-columns: 66px minmax(0, 1fr);
+        }
+
+        .mini-side {
+          padding-inline: 8px;
+        }
+
+        .stage {
+          padding: 12px;
+        }
+
+        .stage-key em {
+          display: none;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="#top" aria-label="Hotkeys for OpenCode home">
+          <span class="brand-key" aria-hidden="true">H</span>
+          <span class="brand-name"
+            >Hotkeys <span class="brand-slash">/</span>
+            <span class="brand-sub">OpenCode</span></span
+          >
+        </a>
+        <nav class="site-nav" aria-label="Primary" data-i18n-aria="navLabel">
+          <a href="#desktop" data-i18n="navDesktop">Desktop</a>
+          <a href="#keymap" data-i18n="navKeymap">Keymap</a>
+          <a href="#install" data-i18n="navInstall">Install</a>
+          <a href="#how" data-i18n="navHow">How it works</a>
+          <a href="#tui" data-i18n="navTui">TUI</a>
+          <a href="#faq" data-i18n="navFaq">FAQ</a>
+        </nav>
+        <div class="controls">
+          <button class="icon-btn" id="langToggle" type="button" aria-label="Switch to Persian">
+            <span id="langLabel">فارسی</span>
+          </button>
+          <button
+            class="icon-btn theme-btn"
+            id="themeToggle"
+            type="button"
+            aria-label="Switch to dark theme"
+          >
+            <svg
+              class="sun"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="4"></circle>
+              <path
+                d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"
+              ></path>
+            </svg>
+            <svg
+              class="moon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              aria-hidden="true"
+            >
+              <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8Z"></path>
+            </svg>
+          </button>
+          <a
+            class="icon-btn"
+            href="https://github.com/NarimanKhaleghi/opencode-hotkeys"
+            aria-label="GitHub repository"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-1.05-.01-1.9-2.78.62-3.37-1.21-3.37-1.21-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.3 9.3 0 0 1 12 6.97c.85 0 1.7.12 2.5.34 1.9-1.33 2.74-1.05 2.74-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.95.68 1.92 0 1.39-.01 2.5-.01 2.84 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span data-i18n="heroEyebrow">OpenCode Desktop · tested on 1.19.3</span>
+            </p>
+            <h1 data-i18n-html="heroTitle">Stop reaching&nbsp;<br />for the mouse.</h1>
+            <p class="lede" data-i18n="heroLede">
+              A native keybind layer for OpenCode Desktop. Open tabs, jump between them, search
+              every session, and reach settings without breaking flow.
+            </p>
+            <div class="hero-actions">
+              <a class="button" href="#install">
+                <span data-i18n="heroPrimary">Install in one command</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6"></path>
+                </svg>
+              </a>
+              <a class="button button-secondary" href="#keymap" data-i18n="heroSecondary"
+                >Read the keymap</a
+              >
+            </div>
+            <ul class="hero-meta">
+              <li data-i18n="heroMeta1">No patch</li>
+              <li data-i18n="heroMeta2">No background process</li>
+              <li data-i18n="heroMeta3">English + Persian docs</li>
+            </ul>
+          </div>
+
+          <div class="hero-visual" aria-hidden="true">
+            <div class="stage">
+              <div class="window">
+                <div class="window-bar">
+                  <span class="traffic"><i></i><i></i><i></i></span>
+                  <span class="window-title">OpenCode Desktop</span>
+                  <span class="focus-pill"><i></i> focused</span>
+                </div>
+                <div class="tabbar">
+                  <span class="tab active"
+                    ><span class="tab-dot"></span> Auth refactor <kbd>1</kbd></span
+                  >
+                  <span class="tab">Docs pass <kbd>2</kbd></span>
+                  <span class="tab">Tests <kbd>3</kbd></span>
+                  <span class="tab-add">+</span>
+                </div>
+                <div class="window-body">
+                  <div class="mini-side">
+                    <span class="mini-line w70"></span>
+                    <span class="mini-line w65"></span>
+                    <span class="mini-line w85"></span>
+                    <span class="mini-line w40"></span>
+                    <span class="mini-line w65"></span>
+                  </div>
+                  <div class="mini-main">
+                    <span class="mini-line w40"></span>
+                    <span class="mini-line w85"></span>
+                    <span class="mini-line w65"></span>
+                    <span class="mini-line w85"></span>
+                    <div class="mini-prompt">
+                      <span>Ask OpenCode…</span>
+                      <span class="mini-keys"><kbd>Alt</kbd><kbd>Enter</kbd></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="stage-keys">
+                <span class="stage-key"><kbd>Alt</kbd><kbd>1</kbd><em>switch</em></span>
+                <span class="stage-key"><kbd>Alt</kbd><kbd>PgDn</kbd><em>cycle</em></span>
+                <span class="stage-key"><kbd>Alt</kbd><kbd>/</kbd><em>search</em></span>
+                <span class="stage-key"><kbd>Alt</kbd><kbd>.</kbd><em>settings</em></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="desktop">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="section-kicker" data-i18n="surfaceKicker">Desktop surface</p>
+            <h2 data-i18n="surfaceTitle">One keymap. Two surfaces.</h2>
+            <p class="section-lede" data-i18n="surfaceLede">
+              OpenCode Desktop gets the browser layer. The terminal edition keeps the full Hotkey
+              Studio. The install and the mental model stay separate, so neither one pretends to be
+              the other.
+            </p>
+          </div>
+          <div class="feature-grid">
+            <article class="feature">
+              <div class="feature-mark key-row" aria-hidden="true">
+                <kbd>Alt</kbd><span class="key-plus">+</span><kbd>1</kbd>
+              </div>
+              <h3 data-i18n="feature1Title">Tabs that act like tabs</h3>
+              <p data-i18n="feature1Body">
+                Alt+Enter opens a draft. Alt+1…9 jumps straight to an open tab. Alt+PageUp/Down
+                cycles without a trip to the tab strip.
+              </p>
+            </article>
+            <article class="feature">
+              <div class="feature-mark key-row" aria-hidden="true">
+                <kbd>Alt</kbd><span class="key-plus">+</span><kbd>PgUp</kbd>
+              </div>
+              <h3 data-i18n="feature2Title">Built for real layouts</h3>
+              <p data-i18n="feature2Body">
+                Persian and Arabic layouts change what letter keys produce. The primary bindings use
+                digits, navigation keys, and punctuation, so they keep working.
+              </p>
+            </article>
+            <article class="feature">
+              <div class="feature-mark key-row" aria-hidden="true">
+                <kbd>Alt</kbd><span class="key-plus">+</span><kbd>.</kbd>
+              </div>
+              <h3 data-i18n="feature3Title">A settings change, not a patch</h3>
+              <p data-i18n="feature3Body">
+                The installer merges native command ids into OpenCode's own settings, writes a
+                backup, and gives you a one-command undo.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="keymap">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="section-kicker" data-i18n="keymapKicker">The keymap</p>
+            <h2 data-i18n="keymapTitle">Every desktop shortcut, in one place.</h2>
+            <p class="section-lede" data-i18n="keymapLede">
+              Install these as a set, or pick the ones you want from Settings → Shortcuts. The
+              Latin-letter and native OpenCode defaults are kept as additional bindings.
+            </p>
+          </div>
+
+          <div
+            class="table-wrap"
+            tabindex="0"
+            role="region"
+            aria-label="Desktop keyboard shortcuts"
+            data-i18n-aria="keymapRegion"
+          >
+            <table>
+              <caption class="sr-only" data-i18n="keymapCaption">
+                Desktop keyboard shortcuts for OpenCode
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col" data-i18n="tableAction">Action</th>
+                  <th scope="col" data-i18n="tablePrimary">Primary</th>
+                  <th scope="col" data-i18n="tableAlso">Also works</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong data-i18n="rowNew">New tab</strong></td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Alt</kbd><span class="key-plus">+</span><kbd>Enter</kbd></span
+                    >
+                  </td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Alt</kbd><span class="key-plus">+</span><kbd>T</kbd
+                      ><span class="key-plus">·</span><kbd>Mod</kbd><span class="key-plus">+</span
+                      ><kbd>T</kbd><span class="key-plus">·</span><kbd>Mod</kbd
+                      ><span class="key-plus">+</span><kbd>N</kbd></span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong data-i18n="rowSwitch">Switch to tab 1…9</strong></td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Alt</kbd><span class="key-plus">+</span><kbd>1…9</kbd></span
+                    >
+                  </td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Mod</kbd><span class="key-plus">+</span><kbd>1…9</kbd></span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong data-i18n="rowPrev">Previous tab</strong></td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Alt</kbd><span class="key-plus">+</span><kbd>PageUp</kbd></span
+                    >
+                  </td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Alt</kbd><span class="key-plus">+</span><kbd>Home</kbd
+                      ><span class="key-plus">·</span><kbd>Ctrl</kbd><span class="key-plus">+</span
+                      ><kbd>Shift</kbd><span class="key-plus">+</span><kbd>Tab</kbd></span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong data-i18n="rowNext">Next tab</strong></td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Alt</kbd><span class="key-plus">+</span><kbd>PageDown</kbd></span
+                    >
+                  </td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Alt</kbd><span class="key-plus">+</span><kbd>End</kbd
+                      ><span class="key-plus">·</span><kbd>Ctrl</kbd><span class="key-plus">+</span
+                      ><kbd>Tab</kbd></span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong data-i18n="rowSearch">Search files, commands, sessions</strong></td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Alt</kbd><span class="key-plus">+</span><kbd>/</kbd></span
+                    >
+                  </td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Alt</kbd><span class="key-plus">+</span><kbd>O</kbd
+                      ><span class="key-plus">·</span><kbd>Mod</kbd><span class="key-plus">+</span
+                      ><kbd>P</kbd></span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong data-i18n="rowSettings">Open Settings</strong></td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Alt</kbd><span class="key-plus">+</span><kbd>.</kbd></span
+                    >
+                  </td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Alt</kbd><span class="key-plus">+</span><kbd>K</kbd
+                      ><span class="key-plus">·</span><kbd>Mod</kbd><span class="key-plus">+</span
+                      ><kbd>,</kbd></span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong data-i18n="rowClose">Close current tab</strong></td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Mod</kbd><span class="key-plus">+</span><kbd>W</kbd></span
+                    >
+                  </td>
+                  <td><span data-i18n="rowNative">Native default</span></td>
+                </tr>
+                <tr>
+                  <td><strong data-i18n="rowReopen">Reopen closed tab</strong></td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Mod</kbd><span class="key-plus">+</span><kbd>Shift</kbd
+                      ><span class="key-plus">+</span><kbd>T</kbd></span
+                    >
+                  </td>
+                  <td><span data-i18n="rowNative">Native default</span></td>
+                </tr>
+                <tr>
+                  <td><strong data-i18n="rowSession">Previous / next session</strong></td>
+                  <td>
+                    <span class="key-row"
+                      ><kbd>Alt</kbd><span class="key-plus">+</span><kbd>↑</kbd
+                      ><span class="key-plus">/</span><kbd>↓</kbd></span
+                    >
+                  </td>
+                  <td><span data-i18n="rowNative">Native default</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-note">
+            <span data-i18n="tableNote1">Alt+1…9 switches open tabs, not history.</span>
+            <span data-i18n="tableNote2">Everything runs while the app is focused.</span>
+            <span data-i18n="tableNote3">Mod is Ctrl on Linux and Windows, and Cmd on macOS.</span>
+          </div>
+
+          <div class="notes-grid">
+            <div class="note">
+              <h3 data-i18n="tabsNoteTitle">Tabs, not history.</h3>
+              <p data-i18n="tabsNoteBody">
+                Alt+1…9 moves between tabs that are already open. To reach any session, use Alt+/
+                and choose it from the search palette.
+              </p>
+            </div>
+            <div class="note">
+              <h3 data-i18n="layoutNoteTitle">Why two sets of keys?</h3>
+              <p data-i18n="layoutNoteBody">
+                The desktop matcher compares the character a key produces, not its physical
+                position. On ir+winkeys, Alt+T produces a Persian character, so the primary set uses
+                digits, arrows, and punctuation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="install">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="section-kicker" data-i18n="installKicker">Install</p>
+            <h2 data-i18n="installTitle">One command. A clean undo.</h2>
+            <p class="section-lede" data-i18n="installLede">
+              The installer uses Node's standard library only. It finds the desktop settings file,
+              backs it up, and merges 14 keybinds without touching anything else.
+            </p>
+          </div>
+
+          <div class="install-grid">
+            <ol class="steps">
+              <li>
+                <div>
+                  <h3 data-i18n="step1Title">Run the installer</h3>
+                  <p data-i18n="step1Body">
+                    Use the one-liner or clone the repository. There is no npm install step.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3 data-i18n="step2Title">Quit and reopen the app</h3>
+                  <p data-i18n="step2Body">
+                    OpenCode Desktop reads its keybinds at startup. The installer never closes the
+                    app for you.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h3 data-i18n="step3Title">Press Alt+Enter</h3>
+                  <p data-i18n="step3Body">
+                    You should get a new draft tab. Use Alt+1…9 to move between open tabs.
+                  </p>
+                </div>
+              </li>
+            </ol>
+
+            <div class="terminal">
+              <div class="terminal-bar">
+                <span class="traffic"><i></i><i></i><i></i></span>
+                <span class="terminal-label">terminal</span>
+                <button
+                  class="copy-btn"
+                  id="copyCommand"
+                  type="button"
+                  aria-label="Copy install command"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    aria-hidden="true"
+                  >
+                    <rect x="9" y="9" width="11" height="11" rx="2"></rect>
+                    <path d="M5 15V6a2 2 0 0 1 2-2h9"></path>
+                  </svg>
+                  <span data-i18n="copy">Copy</span>
+                </button>
+              </div>
+              <div
+                class="os-tabs"
+                role="tablist"
+                aria-label="Operating system"
+                data-i18n-aria="osLabel"
+              >
+                <button
+                  class="os-tab"
+                  id="tab-unix"
+                  type="button"
+                  role="tab"
+                  aria-selected="true"
+                  aria-controls="pane-unix"
+                  data-os="unix"
+                >
+                  Linux / macOS
+                </button>
+                <button
+                  class="os-tab"
+                  id="tab-windows"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="pane-windows"
+                  tabindex="-1"
+                  data-os="windows"
+                >
+                  Windows
+                </button>
+              </div>
+              <div
+                class="os-pane"
+                id="pane-unix"
+                data-pane="unix"
+                role="tabpanel"
+                aria-labelledby="tab-unix"
+                tabindex="0"
+              >
+                <pre><span class="prompt">$ </span>curl -fsSL https://raw.githubusercontent.com/NarimanKhaleghi/opencode-hotkeys/main/install-desktop.sh | sh</pre>
+              </div>
+              <div
+                class="os-pane"
+                id="pane-windows"
+                data-pane="windows"
+                role="tabpanel"
+                aria-labelledby="tab-windows"
+                tabindex="0"
+                hidden
+              >
+                <pre><span class="prompt">PS&gt; </span>irm https://raw.githubusercontent.com/NarimanKhaleghi/opencode-hotkeys/main/install-desktop.ps1 -OutFile "$env:TEMP\opencode-hotkeys.ps1"
+<span class="prompt">PS&gt; </span>powershell -ExecutionPolicy Bypass -File "$env:TEMP\opencode-hotkeys.ps1"</pre>
+              </div>
+              <div class="terminal-foot">
+                <span>Node 20+</span>
+                <span>OpenCode Desktop 1.19+</span>
+                <span class="copy-status" id="copyStatus" role="status" aria-live="polite"></span>
+              </div>
+            </div>
+          </div>
+
+          <details class="details">
+            <summary data-i18n="installDetails">
+              Installer reference, manual setup, and undo
+            </summary>
+            <div class="details-body">
+              <p data-i18n="installDetailsIntro">
+                The installer writes the app's own settings file. Quit the app before uninstalling
+                on Windows. Every write creates a timestamped backup.
+              </p>
+              <div class="mini-table">
+                <div>--check</div>
+                <div data-i18n="optCheck">Exit 0 only when every managed binding is installed.</div>
+                <div>--print</div>
+                <div data-i18n="optPrint">Print the managed keybind JSON.</div>
+                <div>--dry-run</div>
+                <div data-i18n="optDry">Show changes without writing.</div>
+                <div>--uninstall</div>
+                <div data-i18n="optUninstall">Remove only unmodified managed bindings.</div>
+                <div>--restore latest</div>
+                <div data-i18n="optRestore">Restore the newest backup next to default.dat.</div>
+              </div>
+              <p data-i18n="manualIntro">
+                For a manual file edit, parse the JSON string stored at settings.v3 and merge these
+                entries into its keybinds object:
+              </p>
+              <pre>
+{
+  "tab.new": "alt+enter,alt+t,mod+t,mod+n",
+  "tab.1": "alt+1,mod+1",
+  "tab.2": "alt+2,mod+2",
+  "tab.3": "alt+3,mod+3",
+  "tab.4": "alt+4,mod+4",
+  "tab.5": "alt+5,mod+5",
+  "tab.6": "alt+6,mod+6",
+  "tab.7": "alt+7,mod+7",
+  "tab.8": "alt+8,mod+8",
+  "tab.9": "alt+9,mod+9",
+  "tab.prev": "alt+pageup,alt+home,mod+option+arrowleft,ctrl+shift+tab",
+  "tab.next": "alt+pagedown,alt+end,mod+option+arrowright,ctrl+tab",
+  "file.open": "alt+/,alt+o,mod+p",
+  "settings.open": "alt+.,alt+k,mod+comma"
+}</pre>
+              <p data-i18n="manualOutro">
+                On Linux and macOS, mod means Ctrl. On macOS it means Cmd. The desktop app accepts
+                comma-separated alternatives for one action.
+              </p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <section class="section" id="how">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="section-kicker" data-i18n="howKicker">Under the hood</p>
+            <h2 data-i18n="howTitle">A small, reversible pipeline.</h2>
+            <p class="section-lede" data-i18n="howLede">
+              No injection, no wrapper, no service. The installer reads the same settings file the
+              app uses and writes it back atomically.
+            </p>
+          </div>
+          <ol class="pipeline">
+            <li>
+              <span class="pipeline-num">01</span>
+              <h3 data-i18n="how1Title">Find the file</h3>
+              <p data-i18n="how1Body">
+                Checks the standard Linux, macOS, and Windows paths, plus OPENCODE_DESKTOP_CONFIG.
+              </p>
+            </li>
+            <li>
+              <span class="pipeline-num">02</span>
+              <h3 data-i18n="how2Title">Parse settings.v3</h3>
+              <p data-i18n="how2Body">
+                The app stores a JSON string inside default.dat. Only its keybinds object is
+                touched.
+              </p>
+            </li>
+            <li>
+              <span class="pipeline-num">03</span>
+              <h3 data-i18n="how3Title">Merge 14 keys</h3>
+              <p data-i18n="how3Body">
+                Existing bindings, including your own, stay in place. Managed entries are replaced.
+              </p>
+            </li>
+            <li>
+              <span class="pipeline-num">04</span>
+              <h3 data-i18n="how4Title">Back up, then write</h3>
+              <p data-i18n="how4Body">
+                A timestamped backup is created before an atomic rename. Undo is one command.
+              </p>
+            </li>
+          </ol>
+          <div class="path-line">
+            <span>Linux: ~/.config/ai.opencode.desktop/default.dat</span>
+            <span>macOS: ~/Library/Application Support/ai.opencode.desktop/default.dat</span>
+            <span>Windows: %APPDATA%\ai.opencode.desktop\default.dat</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="limits">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="section-kicker" data-i18n="limitsKicker">Limits</p>
+            <h2 data-i18n="limitsTitle">What this is not.</h2>
+            <p class="section-lede" data-i18n="limitsLede">
+              The desktop layer is deliberately narrow. Knowing the edges makes the shortcuts easier
+              to trust.
+            </p>
+          </div>
+          <div class="limit-grid">
+            <article class="limit">
+              <h3 data-i18n="limit1Title">Not an OS-wide hotkey daemon</h3>
+              <p data-i18n="limit1Body">
+                Shortcuts work while OpenCode Desktop is focused. There is no global listener or
+                background process.
+              </p>
+            </article>
+            <article class="limit">
+              <h3 data-i18n="limit2Title">No Studio on the desktop</h3>
+              <p data-i18n="limit2Body">
+                The desktop app does not load TUI plugins. Hotkey Studio stays in the terminal
+                edition; the desktop uses native Settings → Shortcuts.
+              </p>
+            </article>
+            <article class="limit">
+              <h3 data-i18n="limit3Title">Tab slots, not session history</h3>
+              <p data-i18n="limit3Body">
+                Alt+1…9 only reaches tabs that are open. Alt+/ searches the full session list and is
+                the better everyday jump.
+              </p>
+            </article>
+            <article class="limit">
+              <h3 data-i18n="limit4Title">Upstream can rename commands</h3>
+              <p data-i18n="limit4Body">
+                The bindings target built-in command ids. A future app update can change one; run
+                --check after updating and reinstall if needed.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="tui">
+        <div class="wrap">
+          <div class="tui-panel">
+            <div>
+              <p class="section-kicker" data-i18n="tuiKicker">Terminal edition</p>
+              <h2 data-i18n="tuiTitle">The TUI still has the Studio.</h2>
+              <p data-i18n="tuiLede">
+                For preset switching, quick session slots, and a full rebinding UI, use the terminal
+                edition. It is a separate plugin with its own install.
+              </p>
+              <ul class="tui-list">
+                <li data-i18n="tuiPoint1">Native, browser, and notes presets.</li>
+                <li data-i18n="tuiPoint2">Quick slots with pinned and recent sessions.</li>
+                <li data-i18n="tuiPoint3">Hotkey Studio with capture, conflicts, and reset.</li>
+              </ul>
+              <a
+                class="button"
+                id="tuiLink"
+                href="https://github.com/NarimanKhaleghi/opencode-hotkeys#terminal-edition-tui"
+                data-href-en="https://github.com/NarimanKhaleghi/opencode-hotkeys#terminal-edition-tui"
+                data-href-fa="https://github.com/NarimanKhaleghi/opencode-hotkeys/blob/main/README.fa.md#%D9%86%D8%B3%D8%AE%D9%87%D9%94-%D8%AA%D8%B1%D9%85%DB%8C%D9%86%D8%A7%D9%84-tui"
+              >
+                <span data-i18n="tuiCta">Open the TUI guide</span>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6"></path>
+                </svg>
+              </a>
+            </div>
+            <figure class="tui-figure">
+              <img
+                src="assets/hotkey-studio.svg"
+                width="1000"
+                height="640"
+                alt="Hotkey Studio in the OpenCode terminal UI"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption data-i18n="tuiCaption">Hotkey Studio · terminal edition</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <div class="wrap faq-grid">
+          <div class="faq-intro">
+            <p class="section-kicker" data-i18n="faqKicker">Questions</p>
+            <h2 data-i18n="faqTitle">Before you install.</h2>
+            <p data-i18n="faqLede">
+              Short answers about layout, undo, updates, and what the desktop app can and cannot
+              load.
+            </p>
+          </div>
+          <div class="faq-list">
+            <details>
+              <summary data-i18n="faqQ1">Why do only Alt+1…9 work on my keyboard?</summary>
+              <div class="details-body">
+                <p data-i18n="faqA1">
+                  Your layout is producing non-Latin characters for letter keys. Use Alt+Enter,
+                  Alt+PageUp/Down, Alt+/, and Alt+. — the installer leads with those stable keys.
+                  Alt+T, Alt+O, and Alt+K remain for Latin layouts.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary data-i18n="faqQ2">Does this patch or wrap OpenCode Desktop?</summary>
+              <div class="details-body">
+                <p data-i18n="faqA2">
+                  No. It only edits the app's own keybind settings. There is no fork, no injected
+                  script, and no background process.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary data-i18n="faqQ3">How do I undo the install?</summary>
+              <div class="details-body">
+                <p data-i18n="faqA3">
+                  Run desktop/install.mjs --uninstall, or restore the newest backup with --restore
+                  latest. The installer prints the backup path after every write.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary data-i18n="faqQ4">Do I need npm?</summary>
+              <div class="details-body">
+                <p data-i18n="faqA4">
+                  No. The desktop installer has no npm dependencies. You need Node.js 20+ to run it,
+                  or you can edit the app's shortcuts from the native Settings window.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary data-i18n="faqQ5">Will an OpenCode update erase it?</summary>
+              <div class="details-body">
+                <p data-i18n="faqA5">
+                  Your settings file survives app updates. A future release can rename a built-in
+                  command, so run --check after a major update and reinstall if a binding is
+                  reported missing.
+                </p>
+              </div>
+            </details>
+            <details>
+              <summary data-i18n="faqQ6">Does it work when the app is in the background?</summary>
+              <div class="details-body">
+                <p data-i18n="faqA6">
+                  No. These are app shortcuts, not global hotkeys. The OpenCode Desktop window must
+                  be focused.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer-grid">
+        <div>
+          <a class="brand" href="#top">
+            <span class="brand-key" aria-hidden="true">H</span>
+            <span class="brand-name"
+              >Hotkeys <span class="brand-slash">/</span>
+              <span class="brand-sub">OpenCode</span></span
+            >
+          </a>
+          <p class="footer-tagline" data-i18n="footerTagline">
+            Native keys for OpenCode Desktop, and a full Studio for the terminal.
+          </p>
+          <span class="footer-key" aria-hidden="true">H</span>
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/NarimanKhaleghi/opencode-hotkeys" data-i18n="footerRepo"
+            >GitHub repository</a
+          >
+          <a
+            href="https://github.com/NarimanKhaleghi/opencode-hotkeys#readme"
+            data-i18n="footerReadme"
+            >English README</a
+          >
+          <a
+            href="https://github.com/NarimanKhaleghi/opencode-hotkeys/blob/main/README.fa.md"
+            data-i18n="footerReadmeFa"
+            >Persian README</a
+          >
+          <a
+            href="https://github.com/NarimanKhaleghi/opencode-hotkeys/issues"
+            data-i18n="footerIssues"
+            >Report an issue</a
+          >
+        </div>
+        <div class="footer-meta">
+          <span>MIT · 2026</span>
+          <a href="#top" data-i18n="footerTop">Back to top</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      ;(() => {
+        const messages = {
+          en: {
+            skip: "Skip to content",
+            navLabel: "Primary",
+            navDesktop: "Desktop",
+            navKeymap: "Keymap",
+            navInstall: "Install",
+            navHow: "How it works",
+            navTui: "TUI",
+            navFaq: "FAQ",
+            heroEyebrow: "OpenCode Desktop · tested on 1.19.3",
+            heroTitle: "Stop reaching&nbsp;<br>for the mouse.",
+            heroLede:
+              "A native keybind layer for OpenCode Desktop. Open tabs, jump between them, search every session, and reach settings without breaking flow.",
+            heroPrimary: "Install in one command",
+            heroSecondary: "Read the keymap",
+            heroMeta1: "No patch",
+            heroMeta2: "No background process",
+            heroMeta3: "English + Persian docs",
+            surfaceKicker: "Desktop surface",
+            surfaceTitle: "One keymap. Two surfaces.",
+            surfaceLede:
+              "OpenCode Desktop gets the browser layer. The terminal edition keeps the full Hotkey Studio. The install and the mental model stay separate, so neither one pretends to be the other.",
+            feature1Title: "Tabs that act like tabs",
+            feature1Body:
+              "Alt+Enter opens a draft. Alt+1…9 jumps straight to an open tab. Alt+PageUp/Down cycles without a trip to the tab strip.",
+            feature2Title: "Built for real layouts",
+            feature2Body:
+              "Persian and Arabic layouts change what letter keys produce. The primary bindings use digits, navigation keys, and punctuation, so they keep working.",
+            feature3Title: "A settings change, not a patch",
+            feature3Body:
+              "The installer merges native command ids into OpenCode's own settings, writes a backup, and gives you a one-command undo.",
+            keymapKicker: "The keymap",
+            keymapTitle: "Every desktop shortcut, in one place.",
+            keymapLede:
+              "Install these as a set, or pick the ones you want from Settings → Shortcuts. The Latin-letter and native OpenCode defaults are kept as additional bindings.",
+            keymapRegion: "Desktop keyboard shortcuts",
+            keymapCaption: "Desktop keyboard shortcuts for OpenCode",
+            tableAction: "Action",
+            tablePrimary: "Primary",
+            tableAlso: "Also works",
+            rowNew: "New tab",
+            rowSwitch: "Switch to tab 1…9",
+            rowPrev: "Previous tab",
+            rowNext: "Next tab",
+            rowSearch: "Search files, commands, sessions",
+            rowSettings: "Open Settings",
+            rowClose: "Close current tab",
+            rowReopen: "Reopen closed tab",
+            rowSession: "Previous / next session",
+            rowNative: "Native default",
+            tableNote1: "Alt+1…9 switches open tabs, not history.",
+            tableNote2: "Everything runs while the app is focused.",
+            tableNote3: "Mod is Ctrl on Linux and Windows, and Cmd on macOS.",
+            tabsNoteTitle: "Tabs, not history.",
+            tabsNoteBody:
+              "Alt+1…9 moves between tabs that are already open. To reach any session, use Alt+/ and choose it from the search palette.",
+            layoutNoteTitle: "Why two sets of keys?",
+            layoutNoteBody:
+              "The desktop matcher compares the character a key produces, not its physical position. On ir+winkeys, Alt+T produces a Persian character, so the primary set uses digits, arrows, and punctuation.",
+            installKicker: "Install",
+            installTitle: "One command. A clean undo.",
+            installLede:
+              "The installer uses Node's standard library only. It finds the desktop settings file, backs it up, and merges 14 keybinds without touching anything else.",
+            step1Title: "Run the installer",
+            step1Body: "Use the one-liner or clone the repository. There is no npm install step.",
+            step2Title: "Quit and reopen the app",
+            step2Body:
+              "OpenCode Desktop reads its keybinds at startup. The installer never closes the app for you.",
+            step3Title: "Press Alt+Enter",
+            step3Body: "You should get a new draft tab. Use Alt+1…9 to move between open tabs.",
+            copy: "Copy",
+            osLabel: "Operating system",
+            installDetails: "Installer reference, manual setup, and undo",
+            installDetailsIntro:
+              "The installer writes the app's own settings file. Quit the app before uninstalling on Windows. Every write creates a timestamped backup.",
+            optCheck: "Exit 0 only when every managed binding is installed.",
+            optPrint: "Print the managed keybind JSON.",
+            optDry: "Show changes without writing.",
+            optUninstall: "Remove only unmodified managed bindings.",
+            optRestore: "Restore the newest backup next to default.dat.",
+            manualIntro:
+              "For a manual file edit, parse the JSON string stored at settings.v3 and merge these entries into its keybinds object:",
+            manualOutro:
+              "On Linux and Windows, mod means Ctrl. On macOS, mod means Cmd. The desktop app accepts comma-separated alternatives for one action.",
+            howKicker: "Under the hood",
+            howTitle: "A small, reversible pipeline.",
+            howLede:
+              "No injection, no wrapper, no service. The installer reads the same settings file the app uses and writes it back atomically.",
+            how1Title: "Find the file",
+            how1Body:
+              "Checks the standard Linux, macOS, and Windows paths, plus OPENCODE_DESKTOP_CONFIG.",
+            how2Title: "Parse settings.v3",
+            how2Body:
+              "The app stores a JSON string inside default.dat. Only its keybinds object is touched.",
+            how3Title: "Merge 14 keys",
+            how3Body:
+              "Existing bindings, including your own, stay in place. Managed entries are replaced.",
+            how4Title: "Back up, then write",
+            how4Body:
+              "A timestamped backup is created before an atomic rename. Undo is one command.",
+            limitsKicker: "Limits",
+            limitsTitle: "What this is not.",
+            limitsLede:
+              "The desktop layer is deliberately narrow. Knowing the edges makes the shortcuts easier to trust.",
+            limit1Title: "Not an OS-wide hotkey daemon",
+            limit1Body:
+              "Shortcuts work while OpenCode Desktop is focused. There is no global listener or background process.",
+            limit2Title: "No Studio on the desktop",
+            limit2Body:
+              "The desktop app does not load TUI plugins. Hotkey Studio stays in the terminal edition; the desktop uses native Settings → Shortcuts.",
+            limit3Title: "Tab slots, not session history",
+            limit3Body:
+              "Alt+1…9 only reaches tabs that are open. Alt+/ searches the full session list and is the better everyday jump.",
+            limit4Title: "Upstream can rename commands",
+            limit4Body:
+              "The bindings target built-in command ids. A future app update can change one; run --check after updating and reinstall if needed.",
+            tuiKicker: "Terminal edition",
+            tuiTitle: "The TUI still has the Studio.",
+            tuiLede:
+              "For preset switching, quick session slots, and a full rebinding UI, use the terminal edition. It is a separate plugin with its own install.",
+            tuiPoint1: "Native, browser, and notes presets.",
+            tuiPoint2: "Quick slots with pinned and recent sessions.",
+            tuiPoint3: "Hotkey Studio with capture, conflicts, and reset.",
+            tuiCta: "Open the TUI guide",
+            tuiCaption: "Hotkey Studio · terminal edition",
+            faqKicker: "Questions",
+            faqTitle: "Before you install.",
+            faqLede:
+              "Short answers about layout, undo, updates, and what the desktop app can and cannot load.",
+            faqQ1: "Why do only Alt+1…9 work on my keyboard?",
+            faqA1:
+              "Your layout is producing non-Latin characters for letter keys. Use Alt+Enter, Alt+PageUp/Down, Alt+/, and Alt+. — the installer leads with those stable keys. Alt+T, Alt+O, and Alt+K remain for Latin layouts.",
+            faqQ2: "Does this patch or wrap OpenCode Desktop?",
+            faqA2:
+              "No. It only edits the app's own keybind settings. There is no fork, no injected script, and no background process.",
+            faqQ3: "How do I undo the install?",
+            faqA3:
+              "Run desktop/install.mjs --uninstall, or restore the newest backup with --restore latest. The installer prints the backup path after every write.",
+            faqQ4: "Do I need npm?",
+            faqA4:
+              "No. The desktop installer has no npm dependencies. You need Node.js 20+ to run it, or you can edit the app's shortcuts from the native Settings window.",
+            faqQ5: "Will an OpenCode update erase it?",
+            faqA5:
+              "Your settings file survives app updates. A future release can rename a built-in command, so run --check after a major update and reinstall if a binding is reported missing.",
+            faqQ6: "Does it work when the app is in the background?",
+            faqA6:
+              "No. These are app shortcuts, not global hotkeys. The OpenCode Desktop window must be focused.",
+            footerTagline: "Native keys for OpenCode Desktop, and a full Studio for the terminal.",
+            footerRepo: "GitHub repository",
+            footerReadme: "English README",
+            footerReadmeFa: "Persian README",
+            footerIssues: "Report an issue",
+            footerTop: "Back to top",
+            themeDark: "Switch to dark theme",
+            themeLight: "Switch to light theme",
+            langSwitch: "Switch to Persian",
+            copyLabel: "Copy install command",
+            copied: "Copied",
+            copyFailed: "Select the command and copy it",
+            title: "Hotkeys for OpenCode — Desktop keymap and docs",
+            description:
+              "Native browser-style hotkeys for OpenCode Desktop. Install tab switching, search, and settings shortcuts with one command. English and Persian documentation.",
+          },
+          fa: {
+            skip: "رفتن به محتوا",
+            navLabel: "ناوبری اصلی",
+            navDesktop: "دسکتاپ",
+            navKeymap: "نقشهٔ کلیدها",
+            navInstall: "نصب",
+            navHow: "نحوهٔ کار",
+            navTui: "TUI",
+            navFaq: "پرسش‌ها",
+            heroEyebrow: "OpenCode Desktop · تست‌شده با 1.19.3",
+            heroTitle: "دیگر سراغ&nbsp;<br>موس نرو.",
+            heroLede:
+              "یک لایهٔ کلید بومی برای OpenCode Desktop. تب بساز، بین تب‌ها بپر، همهٔ نشست‌ها را جست‌وجو کن و بدون قطع‌شدن جریان کار به تنظیمات برس.",
+            heroPrimary: "نصب با یک فرمان",
+            heroSecondary: "دیدن نقشهٔ کلیدها",
+            heroMeta1: "بدون patch",
+            heroMeta2: "بدون فرایند پس‌زمینه",
+            heroMeta3: "مستندات انگلیسی و فارسی",
+            surfaceKicker: "سطح دسکتاپ",
+            surfaceTitle: "یک نقشهٔ کلید. دو سطح.",
+            surfaceLede:
+              "OpenCode Desktop لایهٔ مرورگری را می‌گیرد. نسخهٔ ترمینال، Hotkey Studio کامل را نگه می‌دارد. نصب و مدل ذهنی هر کدام جدا است تا هیچ‌کدام جای دیگری را نگیرد.",
+            feature1Title: "تب‌هایی که مثل تب رفتار می‌کنند",
+            feature1Body:
+              "‏Alt+Enter یک draft باز می‌کند. ‏Alt+1…9 مستقیم به تب باز می‌رود. ‏Alt+PageUp/Down بدون رفتن به نوار تب، تب‌ها را می‌چرخاند.",
+            feature2Title: "ساخته‌شده برای چیدمان واقعی",
+            feature2Body:
+              "چیدمان فارسی و عربی کاراکتر کلیدهای حرفی را عوض می‌کند. میان‌برهای اصلی از اعداد، کلیدهای ناوبری و نشانه‌گذاری استفاده می‌کنند تا کار کنند.",
+            feature3Title: "یک تغییر تنظیمات، نه patch",
+            feature3Body:
+              "نصب‌کننده شناسهٔ فرمان‌های بومی را در تنظیمات خود OpenCode ادغام می‌کند، پشتیبان می‌سازد و یک فرمان برای برگشت می‌دهد.",
+            keymapKicker: "نقشهٔ کلیدها",
+            keymapTitle: "همهٔ میان‌برهای دسکتاپ، یک‌جا.",
+            keymapLede:
+              "این‌ها را یک‌جا نصب کنید یا از Settings → Shortcuts موارد دلخواه را بگذارید. نسخهٔ حروف لاتین و پیش‌فرض‌های OpenCode هم به‌عنوان گزینه‌های اضافی حفظ می‌شوند.",
+            keymapRegion: "میان‌برهای کیبورد دسکتاپ",
+            keymapCaption: "میان‌برهای کیبورد دسکتاپ برای OpenCode",
+            tableAction: "کار",
+            tablePrimary: "اصلی",
+            tableAlso: "گزینه‌های دیگر",
+            rowNew: "تب جدید",
+            rowSwitch: "رفتن به تب ۱ تا ۹",
+            rowPrev: "تب قبلی",
+            rowNext: "تب بعدی",
+            rowSearch: "جست‌وجوی فایل، فرمان و نشست",
+            rowSettings: "باز کردن تنظیمات",
+            rowClose: "بستن تب فعلی",
+            rowReopen: "بازگرداندن تب بسته‌شده",
+            rowSession: "نشست قبلی / بعدی",
+            rowNative: "پیش‌فرض خود اپ",
+            tableNote1: "‏Alt+1…9 بین تب‌های باز جابه‌جا می‌شود، نه تاریخچه.",
+            tableNote2: "همه‌چیز وقتی اپ فعال است کار می‌کند.",
+            tableNote3: "‏Mod در Linux و Windows یعنی Ctrl و در macOS یعنی Cmd.",
+            tabsNoteTitle: "تب‌ها، نه تاریخچه.",
+            tabsNoteBody:
+              "‏Alt+1…9 بین تب‌هایی که الان بازند جابه‌جا می‌شود. برای رسیدن به هر نشست از ‏Alt+/ استفاده کنید و از پالت جست‌وجو انتخاب کنید.",
+            layoutNoteTitle: "چرا دو دسته کلید؟",
+            layoutNoteBody:
+              "تطبیق‌دهندهٔ دسکتاپ کاراکتری را مقایسه می‌کند که کلید تولید می‌کند، نه موقعیت فیزیکی آن را. در ir+winkeys، ‏Alt+T یک کاراکتر فارسی تولید می‌کند؛ برای همین مجموعهٔ اصلی از اعداد، جهت‌ها و نشانه‌گذاری استفاده می‌کند.",
+            installKicker: "نصب",
+            installTitle: "یک فرمان. برگشت تمیز.",
+            installLede:
+              "نصب‌کننده فقط از کتابخانهٔ استاندارد Node استفاده می‌کند. فایل تنظیمات دسکتاپ را پیدا می‌کند، پشتیبان می‌گیرد و ۱۴ میان‌بر را بدون دست‌زدن به بقیه ادغام می‌کند.",
+            step1Title: "نصب‌کننده را اجرا کنید",
+            step1Body:
+              "از دستور یک‌خطی استفاده کنید یا مخزن را clone کنید. مرحلهٔ npm install وجود ندارد.",
+            step2Title: "اپ را ببندید و دوباره باز کنید",
+            step2Body:
+              "OpenCode Desktop کلیدها را هنگام شروع می‌خواند. نصب‌کننده هیچ‌وقت اپ را برای شما نمی‌بندد.",
+            step3Title: "‏Alt+Enter را بزنید",
+            step3Body: "باید یک تب draft جدید بگیرید. با ‏Alt+1…9 بین تب‌های باز جابه‌جا شوید.",
+            copy: "کپی",
+            osLabel: "سیستم‌عامل",
+            installDetails: "مرجع نصب‌کننده، نصب دستی و برگشت",
+            installDetailsIntro:
+              "نصب‌کننده فایل تنظیمات خود اپ را می‌نویسد. در Windows قبل از حذف، اپ را ببندید. هر نوشتن یک پشتیبان زمان‌دار می‌سازد.",
+            optCheck: "فقط وقتی همهٔ کلیدهای مدیریت‌شده نصب باشند با کد ۰ خارج می‌شود.",
+            optPrint: "JSON کلیدهای مدیریت‌شده را چاپ می‌کند.",
+            optDry: "تغییرات را بدون نوشتن نشان می‌دهد.",
+            optUninstall: "فقط کلیدهای مدیریت‌شدهٔ تغییرنکرده را حذف می‌کند.",
+            optRestore: "جدیدترین پشتیبان کنار default.dat را برمی‌گرداند.",
+            manualIntro:
+              "برای ویرایش دستی فایل، رشتهٔ JSON ذخیره‌شده در settings.v3 را parse کنید و این ورودی‌ها را به آبجکت keybinds اضافه کنید:",
+            manualOutro:
+              "در Linux و Windows، ‏mod یعنی Ctrl. در macOS، ‏mod یعنی Cmd. اپ دسکتاپ برای یک کار، گزینه‌های جداشده با کاما را می‌پذیرد.",
+            howKicker: "زیر پوسته",
+            howTitle: "یک مسیر کوچک و برگشت‌پذیر.",
+            howLede:
+              "بدون تزریق، بدون wrapper و بدون سرویس. نصب‌کننده همان فایل تنظیماتی را می‌خواند که اپ استفاده می‌کند و آن را atomic برمی‌گرداند.",
+            how1Title: "پیدا کردن فایل",
+            how1Body:
+              "مسیرهای استاندارد Linux، macOS و Windows و همچنین OPENCODE_DESKTOP_CONFIG را بررسی می‌کند.",
+            how2Title: "Parse کردن settings.v3",
+            how2Body:
+              "اپ یک رشتهٔ JSON داخل default.dat نگه می‌دارد. فقط آبجکت keybinds آن دست می‌خورد.",
+            how3Title: "ادغام ۱۴ کلید",
+            how3Body:
+              "کلیدهای موجود، از جمله کلیدهای خودتان، سر جایشان می‌مانند. ورودی‌های مدیریت‌شده جایگزین می‌شوند.",
+            how4Title: "پشتیبان، بعد نوشتن",
+            how4Body: "قبل از rename atomic یک پشتیبان زمان‌دار ساخته می‌شود. برگشت یک فرمان است.",
+            limitsKicker: "محدودیت‌ها",
+            limitsTitle: "مرزهای این ابزار.",
+            limitsLede:
+              "لایهٔ دسکتاپ عمداً باریک است. شناختن مرزها اعتماد به میان‌برها را بیشتر می‌کند.",
+            limit1Title: "سرویس میان‌بر سراسری نیست",
+            limit1Body:
+              "میان‌برها وقتی کار می‌کنند که OpenCode Desktop فعال باشد. listener سراسری یا فرایند پس‌زمینه‌ای وجود ندارد.",
+            limit2Title: "استودیو در دسکتاپ نیست",
+            limit2Body:
+              "اپ دسکتاپ پلاگین‌های TUI را لود نمی‌کند. Hotkey Studio در نسخهٔ ترمینال می‌ماند؛ دسکتاپ از Settings → Shortcuts بومی استفاده می‌کند.",
+            limit3Title: "شمارهٔ تب، نه تاریخچهٔ نشست",
+            limit3Body:
+              "‏Alt+1…9 فقط به تب‌های باز می‌رسد. ‏Alt+/ کل فهرست نشست‌ها را جست‌وجو می‌کند و برای پرش روزمره بهتر است.",
+            limit4Title: "upstream می‌تواند نام فرمان را عوض کند",
+            limit4Body:
+              "کلیدها به شناسهٔ فرمان‌های داخلی وصل‌اند. آپدیت بعدی اپ می‌تواند یکی را عوض کند؛ بعد از آپدیت ‏--check را اجرا کنید و در صورت نیاز دوباره نصب کنید.",
+            tuiKicker: "نسخهٔ ترمینال",
+            tuiTitle: "استودیو هنوز در TUI است.",
+            tuiLede:
+              "برای تغییر preset، quick slotهای نشست و رابط کامل تغییر کلید، از نسخهٔ ترمینال استفاده کنید. این یک پلاگین جدا با نصب جداست.",
+            tuiPoint1: "presetهای بومی، مرورگر و یادداشت.",
+            tuiPoint2: "quick slotها با نشست‌های pinشده و اخیر.",
+            tuiPoint3: "Hotkey Studio با ثبت کلید، تداخل و بازنشانی.",
+            tuiCta: "رفتن به راهنمای TUI",
+            tuiCaption: "Hotkey Studio · نسخهٔ ترمینال",
+            faqKicker: "پرسش‌ها",
+            faqTitle: "قبل از نصب.",
+            faqLede:
+              "پاسخ‌های کوتاه دربارهٔ چیدمان، برگشت، آپدیت و چیزهایی که اپ دسکتاپ می‌تواند یا نمی‌تواند بارگذاری کند.",
+            faqQ1: "چرا روی کیبورد من فقط ‏Alt+1…9 کار می‌کند؟",
+            faqA1:
+              "چیدمان شما برای کلیدهای حرفی کاراکتر غیرلاتین تولید می‌کند. از ‏Alt+Enter، ‏Alt+PageUp/Down، ‏Alt+/ و ‏Alt+. استفاده کنید؛ نصب‌کننده همین کلیدهای پایدار را اول می‌گذارد. ‏Alt+T، ‏Alt+O و ‏Alt+K برای چیدمان‌های لاتین می‌مانند.",
+            faqQ2: "آیا این OpenCode Desktop را patch یا wrap می‌کند؟",
+            faqA2:
+              "نه. فقط تنظیمات کلید خود اپ را ویرایش می‌کند. نه fork، نه اسکریپت تزریقی و نه فرایند پس‌زمینه‌ای وجود ندارد.",
+            faqQ3: "چطور نصب را برمی‌گردانم؟",
+            faqA3:
+              "دستور ‏desktop/install.mjs --uninstall را اجرا کنید یا با ‏--restore latest جدیدترین پشتیبان را برگردانید. نصب‌کننده بعد از هر نوشتن مسیر پشتیبان را چاپ می‌کند.",
+            faqQ4: "آیا به npm نیاز دارم؟",
+            faqA4:
+              "نه. نصب‌کنندهٔ دسکتاپ وابستگی npm ندارد. برای اجرا به Node.js 20+ نیاز دارید یا می‌توانید میان‌برها را از پنجرهٔ Settings بومی اپ تغییر دهید.",
+            faqQ5: "آپدیت OpenCode آن را پاک می‌کند؟",
+            faqA5:
+              "فایل تنظیمات شما بعد از آپدیت اپ می‌ماند. نسخهٔ بعدی می‌تواند نام یک فرمان داخلی را عوض کند؛ بعد از آپدیت مهم ‏--check را اجرا کنید و اگر کلیدی گم شده بود دوباره نصب کنید.",
+            faqQ6: "وقتی اپ در پس‌زمینه است کار می‌کند؟",
+            faqA6:
+              "نه. این‌ها میان‌بر خود اپ هستند، نه hotkey سراسری. پنجرهٔ OpenCode Desktop باید فعال باشد.",
+            footerTagline: "کلیدهای بومی برای OpenCode Desktop و یک استودیوی کامل برای ترمینال.",
+            footerRepo: "مخزن GitHub",
+            footerReadme: "README انگلیسی",
+            footerReadmeFa: "README فارسی",
+            footerIssues: "گزارش مشکل",
+            footerTop: "بازگشت به بالا",
+            themeDark: "رفتن به تم تاریک",
+            themeLight: "رفتن به تم روشن",
+            langSwitch: "رفتن به انگلیسی",
+            copyLabel: "کپی فرمان نصب",
+            copied: "کپی شد",
+            copyFailed: "فرمان را انتخاب و کپی کنید",
+            title: "Hotkeys for OpenCode — نقشهٔ کلیدهای دسکتاپ و مستندات",
+            description:
+              "میان‌برهای مرورگری بومی برای OpenCode Desktop. نصب میان‌بر تب، جست‌وجو و تنظیمات با یک فرمان. مستندات انگلیسی و فارسی.",
+          },
+        }
+
+        const html = document.documentElement
+        const langToggle = document.getElementById("langToggle")
+        const langLabel = document.getElementById("langLabel")
+        const themeToggle = document.getElementById("themeToggle")
+        const copyStatus = document.getElementById("copyStatus")
+        const copyButton = document.getElementById("copyCommand")
+        const tuiLink = document.getElementById("tuiLink")
+        const metaDescription = document.querySelector('meta[name="description"]')
+        const themeColor = document.querySelector('meta[name="theme-color"]')
+        let lang = html.dataset.lang === "fa" ? "fa" : "en"
+
+        const updateThemeLabel = () => {
+          const dark = html.dataset.theme === "dark"
+          const label = messages[lang][dark ? "themeLight" : "themeDark"]
+          themeToggle.setAttribute("aria-label", label)
+          themeToggle.setAttribute("title", label)
+        }
+
+        const applyLanguage = (next) => {
+          lang = next
+          const dict = messages[lang]
+          html.lang = lang
+          html.dir = lang === "fa" ? "rtl" : "ltr"
+          html.dataset.lang = lang
+          document.title = dict.title
+          metaDescription.setAttribute("content", dict.description)
+          document.querySelectorAll("[data-i18n]").forEach((node) => {
+            const value = dict[node.dataset.i18n]
+            if (value !== undefined) node.textContent = value
+          })
+          document.querySelectorAll("[data-i18n-html]").forEach((node) => {
+            const value = dict[node.dataset.i18nHtml]
+            if (value !== undefined) node.innerHTML = value
+          })
+          document.querySelectorAll("[data-i18n-aria]").forEach((node) => {
+            const value = dict[node.dataset.i18nAria]
+            if (value !== undefined) node.setAttribute("aria-label", value)
+          })
+          langLabel.textContent = lang === "en" ? "فارسی" : "English"
+          langToggle.setAttribute("aria-label", dict.langSwitch)
+          langToggle.setAttribute("title", dict.langSwitch)
+          copyButton.setAttribute("aria-label", dict.copyLabel)
+          tuiLink.href = lang === "fa" ? tuiLink.dataset.hrefFa : tuiLink.dataset.hrefEn
+          updateThemeLabel()
+          try {
+            localStorage.setItem("hotkeys-lang", lang)
+          } catch {}
+        }
+
+        const applyTheme = (theme) => {
+          html.dataset.theme = theme
+          themeColor.setAttribute("content", theme === "dark" ? "#0a0e13" : "#f2f3ef")
+          updateThemeLabel()
+          try {
+            localStorage.setItem("hotkeys-theme", theme)
+          } catch {}
+        }
+
+        langToggle.addEventListener("click", () => {
+          applyLanguage(lang === "en" ? "fa" : "en")
+        })
+
+        themeToggle.addEventListener("click", () => {
+          applyTheme(html.dataset.theme === "dark" ? "light" : "dark")
+        })
+
+        const osTabs = Array.from(document.querySelectorAll(".os-tab"))
+        const selectOsTab = (tab) => {
+          const os = tab.dataset.os
+          osTabs.forEach((node) => {
+            const selected = node === tab
+            node.setAttribute("aria-selected", String(selected))
+            node.tabIndex = selected ? 0 : -1
+          })
+          document.querySelectorAll(".os-pane").forEach((pane) => {
+            pane.hidden = pane.dataset.pane !== os
+          })
+          copyStatus.textContent = ""
+        }
+
+        osTabs.forEach((tab, index) => {
+          tab.addEventListener("click", () => selectOsTab(tab))
+          tab.addEventListener("keydown", (event) => {
+            const last = osTabs.length - 1
+            let next = null
+            if (event.key === "ArrowRight" || event.key === "ArrowDown")
+              next = index === last ? 0 : index + 1
+            if (event.key === "ArrowLeft" || event.key === "ArrowUp")
+              next = index === 0 ? last : index - 1
+            if (event.key === "Home") next = 0
+            if (event.key === "End") next = last
+            if (next === null) return
+            event.preventDefault()
+            osTabs[next].focus()
+            selectOsTab(osTabs[next])
+          })
+        })
+
+        const activeCommand = () => {
+          const pane = document.querySelector(".os-pane:not([hidden])")
+          return pane
+            ? pane
+                .querySelector("pre")
+                .innerText.replace(/^PS> |^\$ /gm, "")
+                .trim()
+            : ""
+        }
+
+        const copyText = async (text) => {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text)
+            return
+          }
+          const area = document.createElement("textarea")
+          area.value = text
+          area.style.position = "fixed"
+          area.style.opacity = "0"
+          document.body.appendChild(area)
+          area.select()
+          const copied = document.execCommand("copy")
+          area.remove()
+          if (!copied) throw new Error("copy failed")
+        }
+
+        copyButton.addEventListener("click", async () => {
+          try {
+            await copyText(activeCommand())
+            copyStatus.textContent = messages[lang].copied
+          } catch {
+            copyStatus.textContent = messages[lang].copyFailed
+          }
+          window.setTimeout(() => {
+            copyStatus.textContent = ""
+          }, 2400)
+        })
+
+        applyLanguage(lang)
+        applyTheme(html.dataset.theme === "dark" ? "dark" : "light")
+      })()
+    </script>
+  </body>
+</html>

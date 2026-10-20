@@ -1,8 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
   "name": "opencode-hotkeys",
-  "version": "0.1.0",
-  "description": "Browser-style hotkeys and an Obsidian-style hotkey studio for OpenCode.",
+  "version": "0.2.0",
+  "description": "Browser-style hotkeys for OpenCode Desktop and the OpenCode TUI, with a Hotkey Studio for the terminal.",
   "type": "module",
   "license": "MIT",
   "author": "Nariman Khaleghi <narimankhaleghi@gmail.com>",
@@ -10,18 +10,20 @@
     "type": "git",
     "url": "git+https://github.com/NarimanKhaleghi/opencode-hotkeys.git"
   },
-  "homepage": "https://github.com/NarimanKhaleghi/opencode-hotkeys#readme",
+  "homepage": "https://narimankhaleghi.github.io/opencode-hotkeys/",
   "bugs": {
     "url": "https://github.com/NarimanKhaleghi/opencode-hotkeys/issues"
   },
   "keywords": [
     "opencode",
+    "opencode-desktop",
     "opencode-plugin",
     "hotkeys",
     "keybinds",
     "keyboard-shortcuts",
     "tui",
-    "terminal",
+    "desktop",
+    "electron",
     "browser",
     "obsidian",
     "session-switcher"
@@ -40,7 +42,8 @@
     "./package.json": "./package.json"
   },
   "bin": {
-    "opencode-hotkeys": "./bin/opencode-hotkeys.mjs"
+    "opencode-hotkeys": "./bin/opencode-hotkeys.mjs",
+    "opencode-hotkeys-desktop": "./desktop/install.mjs"
   },
   "files": [
     "index.js",
@@ -48,8 +51,12 @@
     "tui.ts",
     "src/",
     "bin/",
+    "desktop/",
     "presets/",
     "schema.json",
+    "install-desktop.sh",
+    "install-desktop.ps1",
+    "docs/",
     "README.md",
     "README.fa.md",
     "LICENSE",

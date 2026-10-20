@@ -5,65 +5,210 @@
 </p>
 
 <p align="center">
-  <strong>Browser-style session switching and an Obsidian-style hotkey studio for OpenCode.</strong>
+  <strong>Browser-style hotkeys for OpenCode Desktop. Native keys, one command, no patch.</strong>
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/opencode-hotkeys"><img src="https://img.shields.io/npm/v/opencode-hotkeys?color=f5a524" alt="npm version"></a>
-  <a href="https://www.npmjs.com/package/opencode-hotkeys"><img src="https://img.shields.io/npm/dm/opencode-hotkeys" alt="npm downloads"></a>
   <a href="https://github.com/NarimanKhaleghi/opencode-hotkeys/actions/workflows/ci.yml"><img src="https://github.com/NarimanKhaleghi/opencode-hotkeys/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
-  <a href="./LICENSE"><img src="https://img.shields.io/npm/l/opencode-hotkeys?color=blue" alt="MIT license"></a>
-  <img src="https://img.shields.io/badge/OpenCode-1.x%20%7C%202.x-111827" alt="OpenCode 1.x and 2.x">
+  <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-1f35ff" alt="MIT license"></a>
+  <img src="https://img.shields.io/badge/OpenCode%20Desktop-1.19%2B-111827" alt="OpenCode Desktop 1.19+">
+  <img src="https://img.shields.io/badge/TUI-1.x%20%7C%202.x-111827" alt="OpenCode TUI 1.x and 2.x">
+  <a href="https://narimankhaleghi.github.io/opencode-hotkeys/"><img src="https://img.shields.io/badge/docs-EN%20%7C%20%D9%81%D8%A7%D8%B1%D8%B3%DB%8C-1f35ff" alt="Documentation"></a>
 </p>
 
 <p align="center">
   <a href="./README.fa.md">فارسی</a> ·
-  <a href="#install">Install</a> ·
-  <a href="#shortcuts">Shortcuts</a> ·
-  <a href="#hotkey-studio">Hotkey Studio</a> ·
-  <a href="#configuration">Configuration</a> ·
+  <a href="https://narimankhaleghi.github.io/opencode-hotkeys/">Documentation</a> ·
+  <a href="#desktop-quick-start">Desktop install</a> ·
+  <a href="#desktop-keymap">Keymap</a> ·
+  <a href="#terminal-edition-tui">TUI edition</a> ·
   <a href="#troubleshooting">Troubleshooting</a>
 </p>
 
 ---
 
-**Hotkeys for OpenCode** adds the shortcuts you already use in a browser and an editor to the OpenCode TUI:
+**Hotkeys for OpenCode** gives OpenCode Desktop the keyboard layer you already know from a browser: new tabs, numbered tab switching, tab cycling, quick search, and settings without reaching for the mouse. The desktop installer writes the app's own keybind settings. It does not patch, wrap, or keep a background process running.
 
-- `Alt+T` starts a new session.
-- `Alt+1…9` jumps between sessions.
-- `Alt+PageUp` / `Alt+PageDown` cycles sessions.
-- `Alt+O` opens a searchable session picker.
-- `Alt+K` opens **Hotkey Studio** to search, inspect, and rebind every action.
-- `Alt+I` shows the active preset and every shortcut.
-
-It is local-first: no network calls, no telemetry, and no runtime dependency on OpenCode packages.
-
-> **Terminal TUI only.** The OpenCode desktop app (Electron) does not load TUI plugins yet. Run `opencode` in a terminal to use these shortcuts.
+The repository also contains a separate terminal edition with presets, quick session slots, and **Hotkey Studio**. Both surfaces are documented below.
 
 <p align="center">
-  <img src="assets/hotkey-studio.svg" alt="Hotkey Studio" width="86%">
+  <img src="assets/hotkey-studio.svg" alt="Hotkey Studio in the OpenCode TUI" width="86%">
 </p>
 
-## Why
+## What you get
 
-OpenCode is excellent at keeping many sessions alive, but switching between them from the keyboard is still limited. This plugin adds a small, predictable layer on top of the existing TUI:
+| Surface            | Desktop app                                   | Terminal TUI                                  |
+| ------------------ | --------------------------------------------- | --------------------------------------------- |
+| New tab            | `Alt+Enter`, `Alt+T`, `Mod+T`, `Mod+N`        | `Alt+T`                                       |
+| Switch open tabs   | `Alt+1…9`, `Mod+1…9`                          | `Alt+1…9` quick session slots                 |
+| Cycle tabs         | `Alt+PageUp/Down`, `Alt+Home/End`             | `Alt+PageUp/Down` sessions                    |
+| Search             | `Alt+/`, `Alt+O`, `Mod+P`                     | `Alt+O` session picker                        |
+| Settings           | `Alt+.`, `Alt+K`, `Mod+,`                     | `Alt+K` Hotkey Studio                         |
+| Rebind from the UI | OpenCode's native Settings → Shortcuts        | Hotkey Studio: capture, conflict check, reset |
+| Presets            | Installed defaults + native OpenCode defaults | `native`, `browser`, `notes`                  |
+| Persistence        | OpenCode Desktop's own settings file          | `tui.json` + OpenCode local state             |
+| Works app-wide     | While the OpenCode desktop window is focused  | While the terminal is focused                 |
 
-- **Native-first by default.** The default preset avoids every shortcut OpenCode already uses.
-- **No fork, no patch.** It is a normal TUI plugin.
-- **Rebind everything.** Hotkey Studio catches the next key you press and checks for conflicts.
-- **Presets, not lock-in.** Choose `native`, `browser`, or `notes`, then override only what you need.
-- **Session-aware.** Quick slots prefer pinned sessions, then recent sessions, and fall back to the newest ones.
+`Mod` is `Ctrl` on Linux and Windows, and `Cmd` on macOS.
 
-## Install
+## Desktop quick start
 
-### 1. From GitHub (available now)
+### Requirements
+
+- OpenCode Desktop **1.19 or newer**. Tested with `1.19.3` on Linux/Wayland.
+- Node.js **20 or newer** for the installer.
+- OpenCode Desktop has been opened at least once, so its settings file exists.
+
+### Install with one command
+
+Linux and macOS:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/NarimanKhaleghi/opencode-hotkeys/main/install-desktop.sh | sh
+```
+
+If you prefer to read the script before running it:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/NarimanKhaleghi/opencode-hotkeys/main/install-desktop.sh -o install-desktop.sh
+sh install-desktop.sh
+```
+
+Windows PowerShell:
+
+```powershell
+irm https://raw.githubusercontent.com/NarimanKhaleghi/opencode-hotkeys/main/install-desktop.ps1 -OutFile "$env:TEMP\opencode-hotkeys.ps1"
+powershell -ExecutionPolicy Bypass -File "$env:TEMP\opencode-hotkeys.ps1"
+```
+
+### Install from a clone
+
+```bash
+git clone https://github.com/NarimanKhaleghi/opencode-hotkeys.git
+node opencode-hotkeys/desktop/install.mjs
+```
+
+The desktop installer has no npm dependencies. A clone is enough.
+
+### Apply the change
+
+Quit OpenCode Desktop completely and reopen it. Then press `Alt+Enter` to create a tab and `Alt+1` to return to the first tab.
+
+The installer never closes or restarts the app for you. The running app reads its keybinds at startup.
+
+### Check, inspect, or undo
+
+```bash
+node desktop/install.mjs --check
+node desktop/install.mjs --print
+node desktop/install.mjs --dry-run
+node desktop/install.mjs --uninstall
+node desktop/install.mjs --restore latest
+```
+
+`--uninstall` removes only the bindings this tool installed. If you customized one of those bindings, it keeps your version and tells you which one it kept. `--restore latest` restores the newest timestamped backup next to `default.dat`.
+
+## Desktop keymap
+
+The primary shortcuts use keys whose names do not change on Persian, Arabic, or other non-Latin keyboard layouts. The Latin-letter versions and OpenCode's original defaults are kept as additional bindings.
+
+| Action                           | Primary           | Also works                   |
+| -------------------------------- | ----------------- | ---------------------------- |
+| New tab (draft session)          | `Alt+Enter`       | `Alt+T`, `Mod+T`, `Mod+N`    |
+| Switch to open tab 1…9           | `Alt+1…9`         | `Mod+1…9`                    |
+| Previous tab                     | `Alt+PageUp`      | `Alt+Home`, `Ctrl+Shift+Tab` |
+| Next tab                         | `Alt+PageDown`    | `Alt+End`, `Ctrl+Tab`        |
+| Search files, commands, sessions | `Alt+/`           | `Alt+O`, `Mod+P`             |
+| Open Settings                    | `Alt+.`           | `Alt+K`, `Mod+,`             |
+| Close current tab                | `Mod+W`           | native default               |
+| Reopen closed tab                | `Mod+Shift+T`     | native default               |
+| Previous / next session          | `Alt+↑` / `Alt+↓` | native default               |
+
+**Tabs, not history.** `Alt+1…9` switches between tabs that are currently open. To jump to any session, including one that is not open in a tab, use the search palette (`Alt+/`) and pick the session.
+
+**Why two sets of keys?** The desktop keybind matcher compares the character produced by the key, not its physical position. On an `ir+winkeys` layout, `Alt+T` produces a Persian character, so `alt+t` cannot match. Digits, navigation keys, `/`, and `.` stay stable, so the installer leads with those and keeps the Latin bindings for Latin layouts.
+
+## How the desktop installer works
+
+1. Finds `default.dat` in the standard OpenCode Desktop config directory for your OS.
+2. Parses the outer JSON and the app's `settings.v3` value.
+3. Merges 14 keybind entries into the existing `keybinds` object.
+4. Writes a timestamped backup next to the settings file.
+5. Writes the new settings atomically and leaves every other preference untouched.
+
+Settings locations:
+
+| OS      | Default path                                                    |
+| ------- | --------------------------------------------------------------- |
+| Linux   | `~/.config/ai.opencode.desktop/default.dat`                     |
+| macOS   | `~/Library/Application Support/ai.opencode.desktop/default.dat` |
+| Windows | `%APPDATA%\ai.opencode.desktop\default.dat`                     |
+
+The installer also checks `OpenCode` and `opencode-desktop` directory names, and honors `OPENCODE_DESKTOP_CONFIG`.
+
+Installer options:
+
+| Option              | Purpose                                               |
+| ------------------- | ----------------------------------------------------- |
+| `-c, --config PATH` | Use a specific `default.dat`                          |
+| `--check`           | Exit `0` only when all managed bindings are installed |
+| `--print`           | Print the managed keybind JSON                        |
+| `--dry-run`         | Show changes without writing                          |
+| `--uninstall`       | Remove only unmodified managed bindings               |
+| `--restore PATH`    | Restore a specific backup                             |
+| `--restore latest`  | Restore the newest backup next to the settings file   |
+| `-h, --help`        | Show help                                             |
+| `-v, --version`     | Show the installer version                            |
+
+### Manual setup
+
+Open **Settings → Shortcuts** in OpenCode Desktop and set the visible commands by hand. Some tab commands are internal, so the installer is the only complete manual-free path.
+
+For a manual file edit, quit the app first. Inside `default.dat`, `settings.v3` is a JSON string. Parse it, then merge these entries into its `keybinds` object:
+
+```json
+{
+  "tab.new": "alt+enter,alt+t,mod+t,mod+n",
+  "tab.1": "alt+1,mod+1",
+  "tab.2": "alt+2,mod+2",
+  "tab.3": "alt+3,mod+3",
+  "tab.4": "alt+4,mod+4",
+  "tab.5": "alt+5,mod+5",
+  "tab.6": "alt+6,mod+6",
+  "tab.7": "alt+7,mod+7",
+  "tab.8": "alt+8,mod+8",
+  "tab.9": "alt+9,mod+9",
+  "tab.prev": "alt+pageup,alt+home,mod+option+arrowleft,ctrl+shift+tab",
+  "tab.next": "alt+pagedown,alt+end,mod+option+arrowright,ctrl+tab",
+  "file.open": "alt+/,alt+o,mod+p",
+  "settings.open": "alt+.,alt+k,mod+comma"
+}
+```
+
+On Linux and Windows, `mod` means `Ctrl`. On macOS, `mod` means `Cmd`. The desktop app accepts comma-separated alternatives for one action.
+
+## Desktop limitations
+
+- Shortcuts work while OpenCode Desktop is focused. This is not an OS-wide hotkey daemon.
+- The desktop app does not load TUI plugins, so Hotkey Studio is not available there. Use OpenCode's native Settings → Shortcuts for further customization.
+- `Alt+1…9` is a tab switcher, not a list of every session. Use `Alt+/` to search all sessions.
+- Tab commands are part of OpenCode Desktop's built-in command catalog. A future upstream rename can break a binding; `--check` will report it.
+- The installer edits local settings only. There is no telemetry, network call, or background process.
+
+## Terminal edition (TUI)
+
+The terminal plugin remains the full-featured edition: presets, quick session slots, `/keys`, and Hotkey Studio.
+
+### Install the TUI edition
+
+From GitHub:
 
 ```bash
 git clone https://github.com/NarimanKhaleghi/opencode-hotkeys.git ~/.local/share/opencode-hotkeys
 realpath ~/.local/share/opencode-hotkeys/tui.ts
 ```
 
-Add the printed absolute path to your global TUI config (usually `~/.config/opencode/tui.json`):
+Add the printed absolute path to `~/.config/opencode/tui.json`:
 
 ```json
 {
@@ -72,51 +217,29 @@ Add the printed absolute path to your global TUI config (usually `~/.config/open
 }
 ```
 
-Restart OpenCode and press `Alt+I` to confirm that the plugin loaded.
+Restart the terminal OpenCode app and press `Alt+I` to confirm the plugin loaded. Use `tui.json`, not `opencode.json`.
 
-> Use `tui.json`, not `opencode.json`. TUI plugins are loaded from the TUI config.
-
-### 2. From npm (when the release is published)
-
-```json
-{
-  "$schema": "https://opencode.ai/tui.json",
-  "plugin": [["opencode-hotkeys", { "preset": "native" }]]
-}
-```
-
-Then restart OpenCode and press `Alt+I` to confirm that the plugin loaded.
-
-### 3. Or run the installer
+Or run the TUI installer from the clone:
 
 ```bash
-npx opencode-hotkeys
-# or
-bunx opencode-hotkeys
+cd ~/.local/share/opencode-hotkeys
+bun install
+node bin/opencode-hotkeys.mjs --preset native
 ```
 
-The installer edits your global `tui.json` while keeping comments and formatting:
+The installer keeps comments and formatting:
 
 ```bash
-npx opencode-hotkeys --preset browser
-npx opencode-hotkeys --bind hotkeys.new=alt+n
-npx opencode-hotkeys --debug
-npx opencode-hotkeys --uninstall
+node bin/opencode-hotkeys.mjs --preset browser
+node bin/opencode-hotkeys.mjs --bind hotkeys.new=alt+n
+node bin/opencode-hotkeys.mjs --debug
+node bin/opencode-hotkeys.mjs --uninstall
 ```
 
-Use `--config <path>` to target another file and `--print` to preview the result without writing it.
+<details>
+<summary><strong>Full TUI reference: presets, Studio, configuration, and troubleshooting</strong></summary>
 
-### 4. Or install from the OpenCode CLI
-
-```bash
-opencode plugin opencode-hotkeys --global
-```
-
-If your build keeps TUI plugins in a separate file, add the `tui.json` entry above as well.
-
-## Shortcuts
-
-### Native first (default)
+#### Native-first preset (default)
 
 | Shortcut       | Action                   |
 | -------------- | ------------------------ |
@@ -128,9 +251,7 @@ If your build keeps TUI plugins in a separate file, add the `tui.json` entry abo
 | `Alt+K`        | Hotkey Studio            |
 | `Alt+I`        | Hotkeys help             |
 
-The native preset deliberately avoids shortcuts OpenCode already owns. It is the safest choice for a first install.
-
-### Browser
+#### Browser preset
 
 | Shortcut         | Action                   |
 | ---------------- | ------------------------ |
@@ -142,9 +263,7 @@ The native preset deliberately avoids shortcuts OpenCode already owns. It is the
 | `Alt+K`          | Hotkey Studio            |
 | `Alt+I`          | Hotkeys help             |
 
-`Ctrl+Tab` and `Ctrl+1…9` are intercepted by some terminals before OpenCode sees them. On macOS, enable **Option as Meta** in your terminal if `Alt` shortcuts do not arrive.
-
-### Notes
+#### Notes preset
 
 | Shortcut         | Action                   |
 | ---------------- | ------------------------ |
@@ -156,7 +275,7 @@ The native preset deliberately avoids shortcuts OpenCode already owns. It is the
 | `Alt+K`          | Hotkey Studio            |
 | `Alt+I`          | Hotkeys help             |
 
-### Slash commands
+#### Slash commands
 
 | Command     | Opens          |
 | ----------- | -------------- |
@@ -164,25 +283,22 @@ The native preset deliberately avoids shortcuts OpenCode already owns. It is the
 | `/hotkeys`  | Hotkeys help   |
 | `/sessions` | Session picker |
 
-## Hotkey Studio
+#### Hotkey Studio
 
 Press `Alt+K` or type `/keys`.
 
-- **Search** every action by title.
-- **Inspect** the current binding and description.
-- **Rebind** by selecting _Rebind shortcut_ and pressing the new combination.
-- **Clear** a binding without assigning a replacement.
-- **Reset** one action or every override back to the selected preset.
-- **Switch presets** without editing JSON.
-- **See conflicts** with other plugin actions and with OpenCode's native shortcuts before applying them.
+- Search every action by title.
+- Inspect the current binding and description.
+- Rebind by selecting _Rebind shortcut_ and pressing the new combination.
+- Clear a binding without assigning a replacement.
+- Reset one action or every override back to the selected preset.
+- Switch presets without editing JSON.
+- See conflicts with other plugin actions and native OpenCode shortcuts before applying them.
+- Copy a ready-made `tui.json` snippet from _How to persist changes_.
 
-Studio changes apply immediately. They are stored in OpenCode's local state and restored on restart. To pin or share them, use _How to persist changes_ to copy a ready-made `tui.json` snippet.
+Studio changes apply immediately, persist in OpenCode's local state, and are restored on restart. An explicit `bindings` value in `tui.json` always wins over a stored Studio change.
 
-Key capture ignores modifier-only presses, treats `Esc` as cancel, and accepts combinations such as `alt+t`, `ctrl+shift+tab`, `f2`, or `pagedown`.
-
-## Configuration
-
-All options live in the plugin entry in `tui.json`:
+#### Configuration
 
 ```json
 {
@@ -211,39 +327,17 @@ All options live in the plugin entry in `tui.json`:
 | `bindings` | object                             | `{}`       | Per-action overrides.                                         |
 | `debug`    | boolean                            | `false`    | Write diagnostic markers to OpenCode's local key-value store. |
 
-### Binding values
-
-```jsonc
-{
-  "hotkeys.new": "alt+t", // one key
-  "hotkeys.picker": ["alt+o", "alt+p"], // several keys
-  "hotkeys.doctor": false, // remove the shortcut entirely
-}
-```
-
-Comma-separated strings are accepted too: `"alt+o,alt+p"`. Key names are normalized, so `Alt+T`, `alt-t`, and `Option+T` resolve to the same binding.
-
 Available action ids:
 
-```
+```text
 hotkeys.new          hotkeys.picker       hotkeys.next
 hotkeys.prev         hotkeys.switch.1-9   hotkeys.studio
 hotkeys.help         hotkeys.doctor
 ```
 
-The JSON Schema is published at [`schema.json`](./schema.json).
+Comma-separated strings are accepted: `"alt+o,alt+p"`. Key names are normalized, so `Alt+T`, `alt-t`, and `Option+T` resolve to the same binding. The JSON Schema is [`schema.json`](./schema.json).
 
-## How quick slots work
-
-Quick slots are intentionally simple:
-
-1. Pinned sessions first, in pin order.
-2. Then recent sessions, newest first.
-3. Missing slots report a short toast instead of failing silently.
-
-The picker lists the same sessions with titles, directories, and relative update times. Selecting an entry navigates to it.
-
-## Compatibility
+#### TUI compatibility
 
 | OpenCode | Adapter              | Status                                                        |
 | -------- | -------------------- | ------------------------------------------------------------- |
@@ -252,62 +346,64 @@ The picker lists the same sessions with titles, directories, and relative update
 
 The package ships raw TypeScript for the TUI entry, matching how OpenCode loads local TUI plugins. There are no runtime imports from `@opencode-ai/plugin` or `@opentui/*`; those packages are development-time types only.
 
+</details>
+
 ## Troubleshooting
 
-### The desktop app does not show the shortcuts
+### Only `Alt+1…9` works on the desktop
 
-The Electron desktop app does not load TUI plugins yet. Run `opencode` in a terminal instead; `tui.json` and this plugin apply to the terminal TUI.
+Your keyboard layout is producing non-Latin characters for letter keys. Press `Alt+Enter` for a new tab, `Alt+PageUp/Down` to cycle, `Alt+/` for search, and `Alt+.` for settings. These are the stable bindings the installer leads with. `Alt+T`, `Alt+O`, and `Alt+K` are still present for Latin layouts.
 
-### Nothing happens after installing
+### A desktop shortcut does nothing
 
-1. Confirm the entry is in `tui.json`, not `opencode.json`.
-2. Restart OpenCode completely.
-3. Press `Alt+I` or type `/hotkeys`.
-4. Make sure you are not running `opencode --pure`, which disables external plugins.
-5. Set `"debug": true` and inspect the `opencode-hotkeys:register` / `opencode-hotkeys:registered` markers in OpenCode's local key-value state.
+1. Quit OpenCode Desktop completely, then reopen it.
+2. Run `node desktop/install.mjs --check` to confirm the settings are present.
+3. Make sure the desktop window is focused. These are not global shortcuts.
+4. Open at least two tabs before testing `Alt+2` or `Alt+PageDown`.
+5. On Windows, quit the app before installing or uninstalling so the settings file is not locked.
 
-### `Alt` shortcuts do not arrive
+### The installer cannot find `default.dat`
+
+Open OpenCode Desktop once so it creates its settings, then retry. If you use a portable or custom build, pass the path explicitly:
+
+```bash
+node desktop/install.mjs --config /path/to/default.dat
+```
+
+### The app updated and a shortcut stopped working
+
+Run `--check`, then rerun the installer. Upstream can rename a built-in command. The installer reports missing command ids instead of silently guessing.
+
+### `Alt` shortcuts do not arrive in the terminal TUI
 
 - On macOS, enable **Option as Meta** (iTerm2: _Profiles → Keys → Left/Right Option key → Esc+_).
 - In tmux, check whether the prefix or terminal settings consume `Alt`.
 - Try a function key or `ctrl+shift+...` combination in Hotkey Studio.
 
-### `Ctrl+Tab` or `Ctrl+1…9` do nothing
+### `Ctrl+Tab` or `Ctrl+1…9` do nothing in the TUI
 
 Many terminals reserve these combinations for tab switching. Prefer the native preset or rebind those actions to `Alt` combinations.
 
-### A shortcut conflicts with OpenCode
+### The TUI Studio reopened with my old shortcut
 
-Open Hotkey Studio: conflicts with native actions are shown before a change is applied. In the configuration file, prefer the native preset and override one action at a time.
-
-### The Studio reopened with my old shortcut after restart
-
-That is intentional: Studio changes are persisted in OpenCode's local state. Use _Reset to preset_ or _Reset all overrides_ to remove them. An explicit `bindings` value in `tui.json` always wins over a stored Studio change.
+That is intentional: Studio changes are persisted in OpenCode's local state. Use _Reset to preset_ or _Reset all overrides_ to remove them. An explicit `bindings` value in `tui.json` always wins.
 
 ## Development
 
 ```bash
 bun install
-bun run check        # typecheck + tests
+bun run check        # typecheck + all tests
 bun run format:check
-npm pack --dry-run   # inspect the published package
+npm pack --dry-run   # inspect the package contents
 ```
 
-The test suite covers key normalization, presets, conflict detection, session ordering, config parsing, the installer, and preset file parity.
+Test coverage includes desktop settings merge, backup, dry-run, check, restore, uninstall, TUI key normalization, presets, conflict detection, session ordering, config parsing, and preset parity.
 
-To try the plugin from a local checkout, point `OPENCODE_TUI_CONFIG` at a test config and list the absolute path to `tui.ts` in the `plugin` array.
-
-## Roadmap
-
-- Full Studio parity in the v2 adapter.
-- Close/reopen and pin tabs from the keyboard.
-- A visual tab bar.
-- Per-project presets.
-- `fa` locale for Studio and help dialogs.
+To try the TUI plugin from a checkout, point `OPENCODE_TUI_CONFIG` at a test config and list the absolute path to `tui.ts` in the `plugin` array.
 
 ## Contributing
 
-Issues and pull requests are welcome. Please run `bun run check` before opening a PR and include the OpenCode version and terminal you tested with.
+Issues and pull requests are welcome. Run `bun run check` before opening a PR and include the OpenCode surface (Desktop or TUI), version, OS, and keyboard layout you tested.
 
 ## License
 

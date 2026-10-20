@@ -8,4 +8,8 @@ test("package metadata stays in sync", () => {
   expect(pkg.exports["./tui"].types).toBe("./tui.ts")
   expect(pkg.files).toContain("schema.json")
   expect(pkg.files).toContain("assets/")
+  expect(pkg.files).toContain("desktop/")
+  expect(pkg.files).toContain("docs/")
+  expect(pkg.files).toContain("install-desktop.ps1")
+  expect(pkg.bin["opencode-hotkeys-desktop"]).toBe("./desktop/install.mjs")
 })
