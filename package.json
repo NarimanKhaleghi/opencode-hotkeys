@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "opencode-hotkeys",
+  "version": "0.1.0",
+  "description": "Browser-style hotkeys and an Obsidian-style hotkey studio for OpenCode.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Nariman Khaleghi <narimankhaleghi@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NarimanKhaleghi/opencode-hotkeys.git"
+  },
+  "homepage": "https://github.com/NarimanKhaleghi/opencode-hotkeys#readme",
+  "bugs": {
+    "url": "https://github.com/NarimanKhaleghi/opencode-hotkeys/issues"
+  },
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "hotkeys",
+    "keybinds",
+    "keyboard-shortcuts",
+    "tui",
+    "terminal",
+    "browser",
+    "obsidian",
+    "session-switcher"
+  ],
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js"
+    },
+    "./tui": {
+      "types": "./tui.ts",
+      "import": "./tui.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "opencode-hotkeys": "./bin/opencode-hotkeys.mjs"
+  },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "tui.ts",
+    "src/",
+    "bin/",
+    "presets/",
+    "schema.json",
+    "README.md",
+    "README.fa.md",
+    "LICENSE",
+    "assets/"
+  ],
+  "scripts": {
+    "test": "bun test",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check": "bun run typecheck && bun test",
+    "prepublishOnly": "bun run check",
+    "pack:check": "npm pack --dry-run"
+  },
+  "dependencies": {
+    "jsonc-parser": "^3.3.1"
+  },
+  "devDependencies": {
+    "@opencode-ai/plugin": "^1.18.23",
+    "@opencode/plugin": "^2.0.32",
+    "@opentui/core": "^0.4.5",
+    "@opentui/keymap": "0.4.5",
+    "@types/node": "^24.0.0",
+    "bun-types": "latest",
+    "prettier": "^3.6.0",
+    "typescript": "^5.8.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "sideEffects": false,
+  "packageManager": "bun@1.4.2",
+  "publishConfig": {
+    "access": "public"
+  }
+}

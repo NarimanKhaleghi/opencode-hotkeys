@@ -1,0 +1,61 @@
+name: Bug report
+description: Something does not work as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to report a bug.
+  - type: input
+    id: opencode
+    attributes:
+      label: OpenCode version
+      placeholder: "1.18.23"
+    validations:
+      required: true
+  - type: input
+    id: terminal
+    attributes:
+      label: Terminal
+      placeholder: "Ghostty 1.2, iTerm2, Windows Terminal…"
+    validations:
+      required: true
+  - type: dropdown
+    id: preset
+    attributes:
+      label: Preset
+      options: [native, browser, notes, custom]
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Add the plugin to tui.json
+        2. Press Alt+T
+        3. …
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: config
+    attributes:
+      label: Relevant tui.json entry
+      render: json
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or diagnostic markers
+      description: 'Set "debug": true and include opencode-hotkeys:* markers if available.'
+      render: text

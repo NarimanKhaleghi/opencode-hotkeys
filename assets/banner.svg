@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="400" viewBox="0 0 1280 400" role="img" aria-labelledby="title desc">
+  <title id="title">Hotkeys for OpenCode</title>
+  <desc id="desc">Browser-style hotkeys and an Obsidian-style hotkey studio for OpenCode.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0f14"/>
+      <stop offset="0.55" stop-color="#101820"/>
+      <stop offset="1" stop-color="#1b1208"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f5a524"/>
+      <stop offset="1" stop-color="#ffd479"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.035"/>
+    </pattern>
+  </defs>
+  <rect width="1280" height="400" fill="url(#bg)"/>
+  <rect width="1280" height="400" fill="url(#grid)"/>
+  <circle cx="1110" cy="70" r="220" fill="#f5a524" fill-opacity="0.06"/>
+  <circle cx="1110" cy="70" r="130" fill="#f5a524" fill-opacity="0.05"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">
+    <text x="80" y="104" fill="#f5a524" font-size="17" letter-spacing="5">OPENCODE PLUGIN</text>
+    <text x="80" y="182" fill="#f0f6fc" font-size="62" font-weight="700">Hotkeys for OpenCode</text>
+    <text x="80" y="230" fill="#9aa7b4" font-size="23">Browser-style session switching</text>
+    <text x="80" y="264" fill="#9aa7b4" font-size="23">with an Obsidian-style hotkey studio.</text>
+    <g transform="translate(80 310)">
+      <g>
+        <rect width="76" height="42" rx="8" fill="#161d26" stroke="#2b3644"/>
+        <text x="38" y="27" text-anchor="middle" fill="#f0f6fc" font-size="17">Alt</text>
+      </g>
+      <g transform="translate(84 0)">
+        <rect width="76" height="42" rx="8" fill="#161d26" stroke="#2b3644"/>
+        <text x="38" y="27" text-anchor="middle" fill="#f0f6fc" font-size="17">T</text>
+      </g>
+      <text x="176" y="28" fill="#66707c" font-size="15">new session</text>
+      <g transform="translate(300 0)">
+        <rect width="76" height="42" rx="8" fill="#161d26" stroke="#2b3644"/>
+        <text x="38" y="27" text-anchor="middle" fill="#f0f6fc" font-size="17">Alt</text>
+      </g>
+      <g transform="translate(384 0)">
+        <rect width="76" height="42" rx="8" fill="#161d26" stroke="#2b3644"/>
+        <text x="38" y="27" text-anchor="middle" fill="#f0f6fc" font-size="17">1–9</text>
+      </g>
+      <text x="476" y="28" fill="#66707c" font-size="15">quick switch</text>
+      <g transform="translate(600 0)">
+        <rect width="76" height="42" rx="8" fill="#161d26" stroke="#2b3644"/>
+        <text x="38" y="27" text-anchor="middle" fill="#f0f6fc" font-size="17">Alt</text>
+      </g>
+      <g transform="translate(684 0)">
+        <rect width="76" height="42" rx="8" fill="#161d26" stroke="#2b3644"/>
+        <text x="38" y="27" text-anchor="middle" fill="#f0f6fc" font-size="17">K</text>
+      </g>
+      <text x="776" y="28" fill="#66707c" font-size="15">studio</text>
+    </g>
+  </g>
+  <rect x="80" y="372" width="1120" height="2" fill="url(#accent)" opacity="0.35"/>
+</svg>

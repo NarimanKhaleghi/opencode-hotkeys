@@ -1,0 +1,23 @@
+{
+  "name": "notes",
+  "label": "Notes",
+  "description": "Obsidian-inspired quick switcher and session movement, with safe Alt+1..9 slot switching.",
+  "bindings": {
+    "hotkeys.new": ["ctrl+n"],
+    "hotkeys.picker": ["ctrl+o"],
+    "hotkeys.next": ["ctrl+tab"],
+    "hotkeys.prev": ["ctrl+shift+tab"],
+    "hotkeys.switch.1": ["alt+1"],
+    "hotkeys.switch.2": ["alt+2"],
+    "hotkeys.switch.3": ["alt+3"],
+    "hotkeys.switch.4": ["alt+4"],
+    "hotkeys.switch.5": ["alt+5"],
+    "hotkeys.switch.6": ["alt+6"],
+    "hotkeys.switch.7": ["alt+7"],
+    "hotkeys.switch.8": ["alt+8"],
+    "hotkeys.switch.9": ["alt+9"],
+    "hotkeys.studio": ["alt+k"],
+    "hotkeys.help": ["alt+i"],
+    "hotkeys.doctor": []
+  }
+}

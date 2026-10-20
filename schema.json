@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/NarimanKhaleghi/opencode-hotkeys/main/schema.json",
+  "title": "opencode-hotkeys options",
+  "description": "Options for the opencode-hotkeys entry in tui.json.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "enabled": {
+      "type": "boolean",
+      "default": true,
+      "description": "Set to false to keep the plugin installed but disable every shortcut."
+    },
+    "preset": {
+      "type": "string",
+      "enum": ["native", "browser", "notes"],
+      "default": "native",
+      "description": "Base shortcut preset. Defaults to the native-first preset."
+    },
+    "bindings": {
+      "type": "object",
+      "description": "Per-action overrides. Keys are action ids such as hotkeys.new. Values are key strings, lists of key strings, or false to remove a shortcut.",
+      "propertyNames": {
+        "pattern": "^hotkeys\\.(new|picker|next|prev|help|studio|doctor|switch\\.[1-9])$"
+      },
+      "additionalProperties": {
+        "oneOf": [
+          { "type": "string", "minLength": 1 },
+          {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          },
+          { "const": false }
+        ]
+      },
+      "examples": [
+        {
+          "hotkeys.new": "alt+n",
+          "hotkeys.picker": ["alt+o", "alt+p"],
+          "hotkeys.doctor": false
+        }
+      ]
+    },
+    "debug": {
+      "type": "boolean",
+      "default": false,
+      "description": "Write diagnostic markers to the OpenCode key-value store."
+    }
+  }
+}

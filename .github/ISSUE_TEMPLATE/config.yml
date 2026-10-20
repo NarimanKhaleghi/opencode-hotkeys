@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: OpenCode documentation
+    url: https://opencode.ai/docs
+    about: Learn about OpenCode plugins and the TUI configuration.

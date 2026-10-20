@@ -1,0 +1,23 @@
+{
+  "name": "browser",
+  "label": "Browser",
+  "description": "Chrome/Firefox-style switching shortcuts. Some terminals intercept Ctrl+Tab and Ctrl+1..9.",
+  "bindings": {
+    "hotkeys.new": ["ctrl+t"],
+    "hotkeys.picker": ["ctrl+l"],
+    "hotkeys.next": ["ctrl+tab"],
+    "hotkeys.prev": ["ctrl+shift+tab"],
+    "hotkeys.switch.1": ["ctrl+1"],
+    "hotkeys.switch.2": ["ctrl+2"],
+    "hotkeys.switch.3": ["ctrl+3"],
+    "hotkeys.switch.4": ["ctrl+4"],
+    "hotkeys.switch.5": ["ctrl+5"],
+    "hotkeys.switch.6": ["ctrl+6"],
+    "hotkeys.switch.7": ["ctrl+7"],
+    "hotkeys.switch.8": ["ctrl+8"],
+    "hotkeys.switch.9": ["ctrl+9"],
+    "hotkeys.studio": ["alt+k"],
+    "hotkeys.help": ["alt+i"],
+    "hotkeys.doctor": []
+  }
+}

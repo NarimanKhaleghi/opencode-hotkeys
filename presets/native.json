@@ -1,0 +1,23 @@
+{
+  "name": "native",
+  "label": "Native first",
+  "description": "Keeps OpenCode's own shortcuts untouched and adds only free Alt-based shortcuts.",
+  "bindings": {
+    "hotkeys.new": ["alt+t"],
+    "hotkeys.picker": ["alt+o"],
+    "hotkeys.next": ["alt+pagedown"],
+    "hotkeys.prev": ["alt+pageup"],
+    "hotkeys.switch.1": ["alt+1"],
+    "hotkeys.switch.2": ["alt+2"],
+    "hotkeys.switch.3": ["alt+3"],
+    "hotkeys.switch.4": ["alt+4"],
+    "hotkeys.switch.5": ["alt+5"],
+    "hotkeys.switch.6": ["alt+6"],
+    "hotkeys.switch.7": ["alt+7"],
+    "hotkeys.switch.8": ["alt+8"],
+    "hotkeys.switch.9": ["alt+9"],
+    "hotkeys.studio": ["alt+k"],
+    "hotkeys.help": ["alt+i"],
+    "hotkeys.doctor": []
+  }
+}
