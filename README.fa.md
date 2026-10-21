@@ -15,6 +15,7 @@
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-1f35ff" alt="MIT license"></a>
   <img src="https://img.shields.io/badge/OpenCode%20Desktop-1.19%2B-111827" alt="OpenCode Desktop 1.19+">
   <img src="https://img.shields.io/badge/TUI-1.x%20%7C%202.x-111827" alt="OpenCode TUI 1.x and 2.x">
+  <a href="https://github.com/NarimanKhaleghi/opencode-hotkeys/releases/tag/v1.0.0"><img src="https://img.shields.io/badge/version-1.0.0-1f35ff" alt="Version 1.0.0"></a>
   <a href="https://narimankhaleghi.github.io/opencode-hotkeys/fa/"><img src="https://img.shields.io/badge/docs-EN%20%7C%20%D9%81%D8%A7%D8%B1%D8%B3%DB%8C-1f35ff" alt="Documentation"></a>
 </p>
 
@@ -36,6 +37,18 @@
 <p align="center">
   <img src="assets/hotkey-studio.svg" alt="Hotkey Studio در OpenCode TUI" width="86%">
 </p>
+
+## جدید در نسخهٔ ۱.۰
+
+نسخهٔ ۱.۰ نصب‌کنندهٔ دسکتاپ را به یک ابزار کامل نگهداری تبدیل می‌کند:
+
+- `--doctor` وضعیت نصب، کلیدهای گم‌شده، شخصی‌سازی‌شده و تکراری را گزارش می‌کند و `--json` برای اسکریپت‌ها دارد.
+- `--backups`، `--restore <name>` و `--prune N` مدیریت همهٔ پشتیبان‌های زمان‌دار را ممکن می‌کنند.
+- `--diff` تفاوت کلید فعلی و جدید را بدون نوشتن نشان می‌دهد و `--keep-custom` از کلیدهای تغییرداده‌شده محافظت می‌کند.
+- CI حالا Linux، macOS، Windows و رانتایم Node 20 را پوشش می‌دهد.
+- مستندات دوزبانه رفتار Option در macOS و قفل فایل در Windows را توضیح می‌دهند.
+
+جزئیات در [انتشار v1.0.0](https://github.com/NarimanKhaleghi/opencode-hotkeys/releases/tag/v1.0.0).
 
 ## چه چیزی می‌گیرید؟
 
@@ -103,12 +116,16 @@ OpenCode Desktop را کامل ببندید و دوباره باز کنید. س�
 ```bash
 node desktop/install.mjs --check
 node desktop/install.mjs --print
-node desktop/install.mjs --dry-run
+node desktop/install.mjs --diff
+node desktop/install.mjs --doctor
+node desktop/install.mjs --backups
 node desktop/install.mjs --uninstall
 node desktop/install.mjs --restore latest
 ```
 
 `--uninstall` فقط کلیدهایی را حذف می‌کند که همین ابزار نصب کرده است. اگر یکی را خودتان تغییر داده باشید، نسخهٔ شما را نگه می‌دارد و می‌گوید کدام‌ها را نگه داشته. `--restore latest` جدیدترین پشتیبان کنار `default.dat` را برمی‌گرداند.
+
+`--doctor` وضعیت نصب، کلیدهای گم‌شده و شخصی‌سازی‌شده، کلیدهای تکراری و پشتیبان‌ها را گزارش می‌کند. با `--json` خروجی ماشینی بگیرید. `--backups` همهٔ پشتیبان‌ها را فهرست می‌کند، `--prune 5` پنج پشتیبان جدید را نگه می‌دارد و `--keep-custom` فقط کلیدهایی را نصب می‌کند که خودتان تغییر نداده‌اید.
 
 ## نقشهٔ کلیدهای دسکتاپ
 
@@ -128,7 +145,9 @@ node desktop/install.mjs --restore latest
 
 **تب‌ها، نه تاریخچه.** `Alt+1…9` بین تب‌هایی جابه‌جا می‌شود که الان باز هستند. برای رفتن به هر نشستی، حتی نشستی که تب باز ندارد، از پالت جست‌وجو (`Alt+/`) استفاده کنید و نشست را انتخاب کنید.
 
-**چرا دو دسته کلید؟** تطبیق‌دهندهٔ کلید دسکتاپ کاراکتری را مقایسه می‌کند که کلید تولید می‌کند، نه موقعیت فیزیکی آن را. در چیدمان `ir+winkeys`، ترکیب `Alt+T` یک کاراکتر فارسی تولید می‌کند و `alt+t` هرگز match نمی‌شود. اعداد، کلیدهای ناوبری، `/` و `.` پایدار می‌مانند؛ برای همین نصب‌کننده آن‌ها را اول می‌گذارد و نسخهٔ لاتین را برای چیدمان‌های لاتین نگه می‌دارد.
+**چرا دو دسته کلید؟** تطبیق‌دهندهٔ کلید دسکتاپ کاراکتری را مقایسه می‌کند که کلید تولید می‌کند، نه موقعیت فیزیکی آن را. در چیدمان فارسی، ترکیب `Alt+T` یک کاراکتر فارسی تولید می‌کند و `alt+t` هرگز match نمی‌شود. اعداد، کلیدهای ناوبری، `/` و `.` پایدار می‌مانند؛ برای همین نصب‌کننده آن‌ها را اول می‌گذارد و نسخهٔ لاتین را برای چیدمان‌های لاتین نگه می‌دارد.
+
+**نکتهٔ macOS.** در macOS، ‏Option+حرف و ‏Option+عدد ممکن است کاراکتر ویژه تولید کنند. به‌جای آن‌ها از `Cmd+1…9`، `Cmd+T`، `Cmd+P` و `Cmd+,` استفاده کنید؛ نصب‌کننده هر دو مجموعه را می‌نویسد.
 
 ## نصب‌کنندهٔ دسکتاپ چه می‌کند؟
 
@@ -156,8 +175,14 @@ node desktop/install.mjs --restore latest
 | `--check`           | خروج با کد `0` فقط وقتی همهٔ کلیدهای مدیریت‌شده نصب باشند |
 | `--print`           | چاپ JSON کلیدهای مدیریت‌شده                               |
 | `--dry-run`         | نمایش تغییرات بدون نوشتن                                  |
+| `--diff`            | نمایش کلید فعلی و جدید بدون نوشتن                         |
+| `--keep-custom`     | نگه‌داشتن کلیدهایی که خودتان تغییر داده‌اید               |
+| `--doctor`          | بررسی کلیدها، تداخل‌ها و پشتیبان‌ها                       |
+| `--json`            | خروجی ماشینی برای `--doctor`                              |
+| `--backups`         | فهرست پشتیبان‌های زمان‌دار                                |
+| `--prune N`         | نگه‌داشتن `N` پشتیبان جدید و حذف قدیمی‌ترها               |
 | `--uninstall`       | حذف فقط کلیدهای مدیریت‌شدهٔ تغییرنکرده                    |
-| `--restore PATH`    | بازگرداندن یک پشتیبان مشخص                                |
+| `--restore PATH`    | بازگرداندن پشتیبان با مسیر یا نام فایل                    |
 | `--restore latest`  | بازگرداندن جدیدترین پشتیبان کنار فایل تنظیمات             |
 | `-h, --help`        | نمایش راهنما                                              |
 | `-v, --version`     | نمایش نسخهٔ نصب‌کننده                                     |

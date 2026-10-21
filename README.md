@@ -13,6 +13,7 @@
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-1f35ff" alt="MIT license"></a>
   <img src="https://img.shields.io/badge/OpenCode%20Desktop-1.19%2B-111827" alt="OpenCode Desktop 1.19+">
   <img src="https://img.shields.io/badge/TUI-1.x%20%7C%202.x-111827" alt="OpenCode TUI 1.x and 2.x">
+  <a href="https://github.com/NarimanKhaleghi/opencode-hotkeys/releases/tag/v1.0.0"><img src="https://img.shields.io/badge/version-1.0.0-1f35ff" alt="Version 1.0.0"></a>
   <a href="https://narimankhaleghi.github.io/opencode-hotkeys/"><img src="https://img.shields.io/badge/docs-EN%20%7C%20%D9%81%D8%A7%D8%B1%D8%B3%DB%8C-1f35ff" alt="Documentation"></a>
 </p>
 
@@ -34,6 +35,18 @@ The repository also contains a separate terminal edition with presets, quick ses
 <p align="center">
   <img src="assets/hotkey-studio.svg" alt="Hotkey Studio in the OpenCode TUI" width="86%">
 </p>
+
+## What's new in 1.0
+
+Version 1.0 turns the desktop installer into a complete maintenance tool:
+
+- `--doctor` reports installed, missing, customized, and duplicate bindings, with `--json` for scripts.
+- `--backups`, `--restore <name>`, and `--prune N` make every timestamped backup manageable.
+- `--diff` previews old and new bindings without writing; `--keep-custom` protects bindings you changed.
+- CI now covers Linux, macOS, Windows, and the Node 20 runtime.
+- Bilingual docs explain the macOS Option-key behavior and the Windows file-lock caveat.
+
+See the [v1.0.0 release](https://github.com/NarimanKhaleghi/opencode-hotkeys/releases/tag/v1.0.0) for details.
 
 ## What you get
 
@@ -101,12 +114,16 @@ The installer never closes or restarts the app for you. The running app reads it
 ```bash
 node desktop/install.mjs --check
 node desktop/install.mjs --print
-node desktop/install.mjs --dry-run
+node desktop/install.mjs --diff
+node desktop/install.mjs --doctor
+node desktop/install.mjs --backups
 node desktop/install.mjs --uninstall
 node desktop/install.mjs --restore latest
 ```
 
 `--uninstall` removes only the bindings this tool installed. If you customized one of those bindings, it keeps your version and tells you which one it kept. `--restore latest` restores the newest timestamped backup next to `default.dat`.
+
+`--doctor` reports installed, missing, and customized bindings, finds duplicate key sequences, and lists backups. Add `--json` for scripting. `--backups` lists every backup, `--prune 5` keeps the five newest, and `--keep-custom` installs only the bindings you have not customized.
 
 ## Desktop keymap
 
@@ -126,7 +143,9 @@ The primary shortcuts use keys whose names do not change on Persian, Arabic, or 
 
 **Tabs, not history.** `Alt+1…9` switches between tabs that are currently open. To jump to any session, including one that is not open in a tab, use the search palette (`Alt+/`) and pick the session.
 
-**Why two sets of keys?** The desktop keybind matcher compares the character produced by the key, not its physical position. On an `ir+winkeys` layout, `Alt+T` produces a Persian character, so `alt+t` cannot match. Digits, navigation keys, `/`, and `.` stay stable, so the installer leads with those and keeps the Latin bindings for Latin layouts.
+**Why two sets of keys?** The desktop keybind matcher compares the character produced by the key, not its physical position. On a Persian layout, `Alt+T` produces a Persian character, so `alt+t` cannot match. Digits, navigation keys, `/`, and `.` stay stable, so the installer leads with those and keeps the Latin bindings for Latin layouts.
+
+**macOS note.** Option+letter and Option+digit may insert special characters on macOS. Use `Cmd+1…9`, `Cmd+T`, `Cmd+P`, and `Cmd+,` instead; the installer writes both sets.
 
 ## How the desktop installer works
 
@@ -154,8 +173,14 @@ Installer options:
 | `--check`           | Exit `0` only when all managed bindings are installed |
 | `--print`           | Print the managed keybind JSON                        |
 | `--dry-run`         | Show changes without writing                          |
+| `--diff`            | Show current and new bindings without writing         |
+| `--keep-custom`     | Leave bindings you changed yourself untouched         |
+| `--doctor`          | Diagnose bindings, duplicates, and backups            |
+| `--json`            | Machine-readable output for `--doctor`                |
+| `--backups`         | List timestamped backups                              |
+| `--prune N`         | Keep the newest `N` backups and delete older ones     |
 | `--uninstall`       | Remove only unmodified managed bindings               |
-| `--restore PATH`    | Restore a specific backup                             |
+| `--restore PATH`    | Restore a backup by path or file name                 |
 | `--restore latest`  | Restore the newest backup next to the settings file   |
 | `-h, --help`        | Show help                                             |
 | `-v, --version`     | Show the installer version                            |

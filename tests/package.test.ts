@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test"
-import { existsSync } from "node:fs"
+import { execFileSync } from "node:child_process"
+import { existsSync, readFileSync } from "node:fs"
 import pkg from "../package.json"
 import { PLUGIN_VERSION } from "../src/core/meta"
 
@@ -31,4 +32,29 @@ test("docs site is split into html, css, and js files", () => {
   ]) {
     expect(existsSync(docs + file)).toBe(true)
   }
+})
+
+test("docs structured data parses and matches the visible FAQ", () => {
+  const docs = new URL("../docs/", import.meta.url).pathname
+  for (const file of ["index.html", "fa/index.html"]) {
+    const html = readFileSync(docs + file, "utf8")
+    const blocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
+    expect(blocks).toHaveLength(3)
+    const parsed = blocks.map((block) => JSON.parse(block[1] ?? ""))
+    const app = parsed.find((entry) => entry["@type"] === "SoftwareApplication")
+    if (!app) throw new Error(`missing SoftwareApplication in ${file}`)
+    expect(app.softwareVersion).toBe(PLUGIN_VERSION)
+    expect(app.downloadUrl).toContain(`/v${PLUGIN_VERSION}`)
+    const faq = parsed.find((entry) => entry["@type"] === "FAQPage")
+    if (!faq) throw new Error(`missing FAQPage in ${file}`)
+    const details = (html.match(/<details>/g) ?? []).length
+    expect(faq.mainEntity).toHaveLength(details)
+  }
+})
+
+test("installer version matches the package version", () => {
+  const version = execFileSync(process.execPath, ["desktop/install.mjs", "--version"], {
+    encoding: "utf8",
+  }).trim()
+  expect(version).toBe(PLUGIN_VERSION)
 })

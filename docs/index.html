@@ -114,11 +114,11 @@
         "@type": "SoftwareApplication",
         "@id": "https://narimankhaleghi.github.io/opencode-hotkeys/#app",
         "name": "OpenCode Hotkeys",
-        "softwareVersion": "0.2.0",
+        "softwareVersion": "1.0.0",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Linux, macOS, Windows",
         "url": "https://narimankhaleghi.github.io/opencode-hotkeys/",
-        "downloadUrl": "https://github.com/NarimanKhaleghi/opencode-hotkeys/releases/tag/v0.2.0",
+        "downloadUrl": "https://github.com/NarimanKhaleghi/opencode-hotkeys/releases/tag/v1.0.0",
         "codeRepository": "https://github.com/NarimanKhaleghi/opencode-hotkeys",
         "license": "https://opensource.org/license/mit",
         "isAccessibleForFree": true,
@@ -140,6 +140,14 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Your layout is producing non-Latin characters for letter keys. Use Alt+Enter, Alt+PageUp/Down, Alt+/, and Alt+. — the installer leads with those stable keys. Alt+T, Alt+O, and Alt+K remain for Latin layouts."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it work on macOS and Windows?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The installer detects all three platforms and writes both Alt and Cmd/Mod bindings. On macOS, Option+letter may type special characters, so the reliable set is Cmd+1…9, Cmd+T, Cmd+P, and Cmd+,. On Windows, quit OpenCode Desktop before installing so the settings file is not locked."
             }
           },
           {
@@ -262,7 +270,7 @@
           <div class="hero-copy">
             <p class="eyebrow">
               <span class="status-dot" aria-hidden="true"></span>
-              <span>OpenCode Desktop · tested on 1.19.3</span>
+              <span>v1.0.0 · OpenCode Desktop · tested on 1.19.3</span>
             </p>
             <h1>Stop reaching&nbsp;<br />for the mouse.</h1>
             <p class="lede">
@@ -380,6 +388,29 @@
                 backup, and gives you a one-command undo.
               </p>
             </article>
+          </div>
+          <div class="notes-grid">
+            <div class="note">
+              <h3>New in 1.0 · Doctor</h3>
+              <p>
+                <code>--doctor</code> reports installed, missing, customized, and duplicate
+                bindings. Add <code>--json</code> when you want machine-readable output.
+              </p>
+            </div>
+            <div class="note">
+              <h3>Backups you control</h3>
+              <p>
+                List them with <code>--backups</code>, restore one by name, or keep the newest
+                <code>--prune N</code> and delete the rest.
+              </p>
+            </div>
+            <div class="note">
+              <h3>Safer installs</h3>
+              <p>
+                <code>--diff</code> previews old and new bindings without writing.
+                <code>--keep-custom</code> leaves the keys you edited yourself untouched.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -538,6 +569,7 @@
             <span>Alt+1…9 switches open tabs, not history.</span>
             <span>Everything runs while the app is focused.</span>
             <span>Mod is Ctrl on Linux and Windows, and Cmd on macOS.</span>
+            <span>On macOS, prefer the Cmd alternatives.</span>
           </div>
 
           <div class="notes-grid">
@@ -552,8 +584,15 @@
               <h3>Why two sets of keys?</h3>
               <p>
                 The desktop matcher compares the character a key produces, not its physical
-                position. On ir+winkeys, Alt+T produces a Persian character, so the primary set uses
-                digits, arrows, and punctuation.
+                position. On a Persian layout, Alt+T produces a Persian character, so the primary
+                set uses digits, arrows, and punctuation.
+              </p>
+            </div>
+            <div class="note">
+              <h3>macOS uses Cmd.</h3>
+              <p>
+                Option+letter and Option+digit can insert special characters on macOS. Use Cmd+1…9,
+                Cmd+T, Cmd+P, and Cmd+, instead; the installer writes both sets.
               </p>
             </div>
           </div>
@@ -688,6 +727,14 @@
                 <div>Print the managed keybind JSON.</div>
                 <div>--dry-run</div>
                 <div>Show changes without writing.</div>
+                <div>--diff</div>
+                <div>Show current and new bindings without writing.</div>
+                <div>--doctor</div>
+                <div>Report missing, customized, and duplicate bindings.</div>
+                <div>--backups</div>
+                <div>List timestamped backups.</div>
+                <div>--prune N</div>
+                <div>Keep the newest N backups.</div>
                 <div>--uninstall</div>
                 <div>Remove only unmodified managed bindings.</div>
                 <div>--restore latest</div>
@@ -882,6 +929,17 @@
               </div>
             </details>
             <details>
+              <summary>Does it work on macOS and Windows?</summary>
+              <div class="details-body">
+                <p>
+                  Yes. The installer detects all three platforms and writes both Alt and Cmd/Mod
+                  bindings. On macOS, Option+letter may type special characters, so the reliable set
+                  is Cmd+1…9, Cmd+T, Cmd+P, and Cmd+,. On Windows, quit OpenCode Desktop before
+                  installing so the settings file is not locked.
+                </p>
+              </div>
+            </details>
+            <details>
               <summary>Does this patch or wrap OpenCode Desktop?</summary>
               <div class="details-body">
                 <p>
@@ -959,7 +1017,7 @@
           >
         </div>
         <div class="footer-meta">
-          <span>MIT · 2026</span>
+          <span>v1.0.0 · MIT · 2026</span>
           <a href="#top">Back to top</a>
         </div>
       </div>

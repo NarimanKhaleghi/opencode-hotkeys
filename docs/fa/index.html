@@ -108,11 +108,11 @@
         "@type": "SoftwareApplication",
         "@id": "https://narimankhaleghi.github.io/opencode-hotkeys/#app",
         "name": "OpenCode Hotkeys",
-        "softwareVersion": "0.2.0",
+        "softwareVersion": "1.0.0",
         "applicationCategory": "DeveloperApplication",
         "operatingSystem": "Linux, macOS, Windows",
         "url": "https://narimankhaleghi.github.io/opencode-hotkeys/",
-        "downloadUrl": "https://github.com/NarimanKhaleghi/opencode-hotkeys/releases/tag/v0.2.0",
+        "downloadUrl": "https://github.com/NarimanKhaleghi/opencode-hotkeys/releases/tag/v1.0.0",
         "codeRepository": "https://github.com/NarimanKhaleghi/opencode-hotkeys",
         "license": "https://opensource.org/license/mit",
         "isAccessibleForFree": true,
@@ -134,6 +134,14 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "چیدمان شما برای کلیدهای حرفی کاراکتر غیرلاتین تولید می‌کند. از Alt+Enter، Alt+PageUp/Down، Alt+/ و Alt+. استفاده کنید؛ نصب‌کننده همین کلیدهای پایدار را اول می‌گذارد. Alt+T، Alt+O و Alt+K برای چیدمان‌های لاتین می‌مانند."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "آیا روی macOS و Windows کار می‌کند؟",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "بله. نصب‌کننده هر سه پلتفرم را تشخیص می‌دهد و کلیدهای Alt و Cmd/Mod را با هم می‌نویسد. در macOS ممکن است Option+حرف کاراکتر ویژه بسازد؛ مجموعهٔ مطمئن Cmd+1…9، Cmd+T، Cmd+P و Cmd+, است. در Windows قبل از نصب OpenCode Desktop را ببندید تا فایل تنظیمات قفل نباشد."
             }
           },
           {
@@ -256,7 +264,7 @@
           <div class="hero-copy">
             <p class="eyebrow">
               <span class="status-dot" aria-hidden="true"></span>
-              <span>OpenCode Desktop · تست‌شده با 1.19.3</span>
+              <span>v1.0.0 · OpenCode Desktop · تست‌شده با 1.19.3</span>
             </p>
             <h1>دیگر سراغ&nbsp;<br />موس نرو.</h1>
             <p class="lede">
@@ -373,6 +381,29 @@
                 می‌سازد و یک فرمان برای برگشت می‌دهد.
               </p>
             </article>
+          </div>
+          <div class="notes-grid">
+            <div class="note">
+              <h3>جدید در ۱.۰ · Doctor</h3>
+              <p>
+                دستور <code>--doctor</code> کلیدهای نصب‌شده، گم‌شده، شخصی‌سازی‌شده و تکراری را گزارش
+                می‌کند. برای خروجی ماشینی <code>--json</code> را اضافه کنید.
+              </p>
+            </div>
+            <div class="note">
+              <h3>کنترل پشتیبان‌ها</h3>
+              <p>
+                با <code>--backups</code> فهرست بگیرید، یک پشتیبان را با نام برگردانید یا با
+                <code>--prune N</code> جدیدترین‌ها را نگه دارید و بقیه را حذف کنید.
+              </p>
+            </div>
+            <div class="note">
+              <h3>نصب مطمئن‌تر</h3>
+              <p>
+                <code>--diff</code> کلید فعلی و جدید را بدون نوشتن نشان می‌دهد و
+                <code>--keep-custom</code> کلیدهایی را که خودتان تغییر داده‌اید دست‌نخورده می‌گذارد.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -526,6 +557,7 @@
             <span>‏Alt+1…9 بین تب‌های باز جابه‌جا می‌شود، نه تاریخچه.</span>
             <span>همه‌چیز وقتی اپ فعال است کار می‌کند.</span>
             <span>‏Mod در Linux و Windows یعنی Ctrl و در macOS یعنی Cmd.</span>
+            <span>در macOS از معادل‌های Cmd استفاده کنید.</span>
           </div>
 
           <div class="notes-grid">
@@ -540,8 +572,15 @@
               <h3>چرا دو دسته کلید؟</h3>
               <p>
                 تطبیق‌دهندهٔ دسکتاپ کاراکتری را مقایسه می‌کند که کلید تولید می‌کند، نه موقعیت فیزیکی
-                آن را. در ir+winkeys، ‏Alt+T یک کاراکتر فارسی تولید می‌کند؛ برای همین مجموعهٔ اصلی
+                آن را. در چیدمان فارسی، ‏Alt+T یک کاراکتر فارسی تولید می‌کند؛ برای همین مجموعهٔ اصلی
                 از اعداد، جهت‌ها و نشانه‌گذاری استفاده می‌کند.
+              </p>
+            </div>
+            <div class="note">
+              <h3>macOS با Cmd.</h3>
+              <p>
+                در macOS، ‏Option+حرف و ‏Option+عدد ممکن است کاراکتر ویژه تولید کنند. از ‏Cmd+1…9،
+                ‏Cmd+T، ‏Cmd+P و ‏Cmd+, استفاده کنید؛ نصب‌کننده هر دو مجموعه را می‌نویسد.
               </p>
             </div>
           </div>
@@ -679,6 +718,14 @@
                 <div>JSON کلیدهای مدیریت‌شده را چاپ می‌کند.</div>
                 <div>--dry-run</div>
                 <div>تغییرات را بدون نوشتن نشان می‌دهد.</div>
+                <div>--diff</div>
+                <div>کلید فعلی و جدید را بدون نوشتن نشان می‌دهد.</div>
+                <div>--doctor</div>
+                <div>کلیدهای گم‌شده، شخصی‌سازی‌شده و تکراری را گزارش می‌کند.</div>
+                <div>--backups</div>
+                <div>پشتیبان‌های زمان‌دار را فهرست می‌کند.</div>
+                <div>--prune N</div>
+                <div>N پشتیبان جدید را نگه می‌دارد.</div>
                 <div>--uninstall</div>
                 <div>فقط کلیدهای مدیریت‌شدهٔ تغییرنکرده را حذف می‌کند.</div>
                 <div>--restore latest</div>
@@ -873,6 +920,17 @@
               </div>
             </details>
             <details>
+              <summary>آیا روی macOS و Windows کار می‌کند؟</summary>
+              <div class="details-body">
+                <p>
+                  بله. نصب‌کننده هر سه پلتفرم را تشخیص می‌دهد و کلیدهای ‏Alt و ‏Cmd/Mod را با هم
+                  می‌نویسد. در macOS ممکن است ‏Option+حرف کاراکتر ویژه بسازد؛ مجموعهٔ مطمئن
+                  ‏Cmd+1…9، ‏Cmd+T، ‏Cmd+P و ‏Cmd+, است. در Windows قبل از نصب ‏OpenCode Desktop را
+                  ببندید تا فایل تنظیمات قفل نباشد.
+                </p>
+              </div>
+            </details>
+            <details>
               <summary>آیا این OpenCode Desktop را patch یا wrap می‌کند؟</summary>
               <div class="details-body">
                 <p>
@@ -951,7 +1009,7 @@
           >
         </div>
         <div class="footer-meta">
-          <span>MIT · 2026</span>
+          <span>v1.0.0 · MIT · 2026</span>
           <a href="#top">بازگشت به بالا</a>
         </div>
       </div>

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
   "name": "opencode-hotkeys",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Browser-style hotkeys for OpenCode Desktop and the OpenCode TUI, with a Hotkey Studio for the terminal.",
   "type": "module",
   "license": "MIT",

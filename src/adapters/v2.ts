@@ -344,7 +344,7 @@ async function openStudio(ctx: V2Context, config: ResolvedConfig): Promise<void>
       "",
       `Bindings: ${formatBindings(config.bindings[action.id]) || "Not bound"}`,
       "",
-      "Editing lands in v0.2. For now set it in tui.json → plugin options.",
+      "Editing is available in the classic TUI. For this runtime, set it in tui.json → plugin options.",
     ].join("\n"),
   )
 }

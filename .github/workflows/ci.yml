@@ -10,7 +10,11 @@ permissions:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v2
@@ -21,5 +25,24 @@ jobs:
           node-version: 22
       - run: bun install --frozen-lockfile
       - run: bun run check
-      - run: bun run format:check
-      - run: npm pack --dry-run
+      - if: runner.os == 'Linux'
+        run: bun run format:check
+      - if: runner.os == 'Linux'
+        run: npm pack --dry-run
+
+  node20:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Smoke test the installer on Node 20
+        shell: bash
+        run: |
+          node --check desktop/install.mjs
+          node desktop/install.mjs --version
+          node desktop/install.mjs --help
+          dir="$(mktemp -d)"
+          printf '%s' '{"settings.v3":"{\"keybinds\":{}}"}' > "$dir/default.dat"
+          node desktop/install.mjs --config "$dir/default.dat" --dry-run --diff
