@@ -1,6 +1,8 @@
 import { expect, test } from "bun:test"
 import { execFileSync } from "node:child_process"
 import { existsSync, readFileSync } from "node:fs"
+import { join } from "node:path"
+import { fileURLToPath } from "node:url"
 import pkg from "../package.json"
 import { PLUGIN_VERSION } from "../src/core/meta"
 
@@ -17,7 +19,7 @@ test("package metadata stays in sync", () => {
 })
 
 test("docs site is split into html, css, and js files", () => {
-  const docs = new URL("../docs/", import.meta.url).pathname
+  const docs = fileURLToPath(new URL("../docs/", import.meta.url))
   for (const file of [
     "index.html",
     "fa/index.html",
@@ -30,14 +32,14 @@ test("docs site is split into html, css, and js files", () => {
     "sitemap.xml",
     "site.webmanifest",
   ]) {
-    expect(existsSync(docs + file)).toBe(true)
+    expect(existsSync(join(docs, file))).toBe(true)
   }
 })
 
 test("docs structured data parses and matches the visible FAQ", () => {
-  const docs = new URL("../docs/", import.meta.url).pathname
+  const docs = fileURLToPath(new URL("../docs/", import.meta.url))
   for (const file of ["index.html", "fa/index.html"]) {
-    const html = readFileSync(docs + file, "utf8")
+    const html = readFileSync(join(docs, file), "utf8")
     const blocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)]
     expect(blocks).toHaveLength(3)
     const parsed = blocks.map((block) => JSON.parse(block[1] ?? ""))
